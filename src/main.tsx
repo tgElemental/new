@@ -3,9 +3,31 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import "@mantine/core/styles.css";
-import { MantineProvider, createTheme } from "@mantine/core";
+import "@mantine/notifications/styles.css";
+import "@mantine/carousel/styles.css";
+import {
+  DirectionProvider,
+  MantineProvider,
+  createTheme,
+  rem,
+} from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
+import { NavigationProgress } from "@mantine/nprogress";
 const theme = createTheme({
   fontFamily: "Open Sans, sans-serif",
+  headings: {
+    fontWeight: "400",
+    fontFamily: "Roboto",
+    sizes: {
+      h1: {
+        fontWeight: "100",
+        fontSize: rem(36),
+        lineHeight: "1.4",
+      },
+      h2: { fontSize: rem(30), lineHeight: "1.5" },
+      h6: { fontWeight: "900" },
+    },
+  },
   primaryColor: "cyan",
   colors: {
     "ocean-blue": [
@@ -36,8 +58,12 @@ const theme = createTheme({
 });
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <MantineProvider theme={theme}>
-      <App />
-    </MantineProvider>
+    <DirectionProvider initialDirection="rtl">
+      <MantineProvider theme={theme}>
+        <NavigationProgress />
+        <Notifications />
+        <App />
+      </MantineProvider>
+    </DirectionProvider>
   </React.StrictMode>,
 );

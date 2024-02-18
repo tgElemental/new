@@ -67,8 +67,6 @@ button:focus-visible {
   }
 }
 
-
-
 .card {
   height: rem(440px);
   display: flex;

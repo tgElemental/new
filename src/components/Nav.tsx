@@ -157,18 +157,8 @@ export default function Nav() {
           </Group>
 
           <Group visibleFrom="sm">
-            <Button
-              variant="gradient"
-              gradient={{ from: "pink", to: "yellow" }}
-            >
-              بازی
-            </Button>
-            <Button
-              variant="gradient"
-              gradient={{ to: "#c3b091", from: "#0e87cc", deg: 90 }}
-            >
-              دعوت
-            </Button>
+            <Button variant="gradient">بازی</Button>
+            <Button variant="gradient">دعوت</Button>
           </Group>
 
           <Burger

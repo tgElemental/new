@@ -15,6 +15,7 @@ clarity.consent();
 clarity.setTag("miniapp", "new");
 const theme = createTheme({
   fontFamily: "Vazirmatn UI FD",
+  defaultGradient: { to: "#c3b091", from: "#0e87cc", deg: 45 },
   headings: {
     fontFamily: "Vazirmatn UI FD",
     sizes: {
@@ -57,7 +58,7 @@ const theme = createTheme({
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <DirectionProvider initialDirection="rtl">
-      <MantineProvider theme={theme}>
+      <MantineProvider defaultColorScheme="light" theme={theme}>
         <NavigationProgress />
         <Notifications />
         <App />

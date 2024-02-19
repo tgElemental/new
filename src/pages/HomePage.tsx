@@ -44,6 +44,7 @@ function Card({ image, title, category }: CardProps) {
       radius="md"
       style={{ backgroundImage: `url(${image})` }}
       className="card"
+      m={10}
     >
       <div>
         <Text className="category" size="xs">
@@ -70,15 +71,13 @@ function HomePage() {
   return (
     <>
       <Nav />
-      <Paper shadow="xl" radius="md" withBorder p="xl">
-        This is a paper
-      </Paper>
       <Carousel
         slideSize={{ base: "100%", sm: "50%" }}
         slideGap={{ base: "xl", sm: 2 }}
         align="start"
         slidesToScroll={mobile ? 1 : 2}
         dir="rtl"
+        loop
       >
         {slides}
       </Carousel>

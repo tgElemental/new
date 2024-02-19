@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Nav from "../components/Nav";
+import { Loader } from "@mantine/core";
 
 interface RankingItem {
   name: string;
@@ -29,7 +30,7 @@ const RankingPage = () => {
     <>
       <Nav />
       {loading ? (
-        <span style={{ fontSize: 24 }}>Loading</span>
+        <Loader color="blue" size="xl" type="dots" />
       ) : (
         <ul>
           {data.map((item, index) => (

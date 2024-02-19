@@ -5,7 +5,12 @@ import "./index.css";
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
 import "@mantine/carousel/styles.css";
-import { DirectionProvider, MantineProvider, createTheme } from "@mantine/core";
+import {
+  Container,
+  DirectionProvider,
+  MantineProvider,
+  createTheme,
+} from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { NavigationProgress } from "@mantine/nprogress";
 import { clarity } from "react-microsoft-clarity";
@@ -61,7 +66,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <MantineProvider defaultColorScheme="light" theme={theme}>
         <NavigationProgress />
         <Notifications />
-        <App />
+        <Container size="xs">
+          <App />
+        </Container>
       </MantineProvider>
     </DirectionProvider>
   </React.StrictMode>,

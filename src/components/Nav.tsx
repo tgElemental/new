@@ -91,7 +91,7 @@ export default function Nav() {
   ));
 
   return (
-    <Box pb={120}>
+    <Box pb={10}>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
           <Group h="100%" gap={0} visibleFrom="sm">

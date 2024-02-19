@@ -70,6 +70,9 @@ function HomePage() {
   return (
     <>
       <Nav />
+      <Paper shadow="xl" radius="md" withBorder p="xl">
+        This is a paper
+      </Paper>
       <Carousel
         slideSize={{ base: "100%", sm: "50%" }}
         slideGap={{ base: "xl", sm: 2 }}

@@ -1,7 +1,25 @@
 import HomePage from "./pages/HomePage";
-
+import { MemoryRouter as Router, Route, Routes } from "react-router-dom";
+import ProfilePage from "./pages/ProfilePage";
+import GamePage from "./pages/GamePage";
+import HelpPage from "./pages/HelpPage";
+import InvitePage from "./pages/InvitePage";
+import RankingPage from "./pages/RankingPage";
+import ElementsPage from "./pages/ElementsPage";
 function App() {
-  return <HomePage />;
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/game" element={<GamePage />} />
+        <Route path="/help" element={<HelpPage />} />
+        <Route path="/invite" element={<InvitePage />} />
+        <Route path="/ranking" element={<RankingPage />} />
+        <Route path="/elements" element={<ElementsPage />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;

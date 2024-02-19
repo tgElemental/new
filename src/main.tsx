@@ -5,27 +5,25 @@ import "./index.css";
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
 import "@mantine/carousel/styles.css";
-import {
-  DirectionProvider,
-  MantineProvider,
-  createTheme,
-  rem,
-} from "@mantine/core";
+import { DirectionProvider, MantineProvider, createTheme } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { NavigationProgress } from "@mantine/nprogress";
+import { clarity } from "react-microsoft-clarity";
+
+clarity.init("kzhxxy2ip7");
+clarity.consent();
+clarity.setTag("miniapp", "new");
 const theme = createTheme({
-  fontFamily: "Open Sans, sans-serif",
+  fontFamily: "Vazirmatn UI FD",
   headings: {
-    fontWeight: "400",
-    fontFamily: "Roboto",
+    fontFamily: "Vazirmatn UI FD",
     sizes: {
-      h1: {
-        fontWeight: "100",
-        fontSize: rem(36),
-        lineHeight: "1.4",
-      },
-      h2: { fontSize: rem(30), lineHeight: "1.5" },
-      h6: { fontWeight: "900" },
+      h1: { fontWeight: "900" },
+      h2: { fontWeight: "800" },
+      h3: { fontWeight: "700" },
+      h4: { fontWeight: "600" },
+      h5: { fontWeight: "500" },
+      h6: { fontWeight: "400" },
     },
   },
   primaryColor: "cyan",

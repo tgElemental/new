@@ -6,7 +6,19 @@ import HelpPage from "./pages/HelpPage";
 import InvitePage from "./pages/InvitePage";
 import RankingPage from "./pages/RankingPage";
 import ElementsPage from "./pages/ElementsPage";
+import WebApp from "@twa-dev/sdk";
 function App() {
+  WebApp.ready();
+  WebApp.setBackgroundColor("#C3B091");
+  WebApp.setHeaderColor("#C3B091");
+  WebApp.enableClosingConfirmation;
+  WebApp.BackButton.show();
+  WebApp.MainButton.color = "#C3B091";
+  WebApp.MainButton.onClick(() => {
+    WebApp.openTelegramLink("https://t.me/ElementalGameBot");
+  });
+  WebApp.MainButton.setText("بازی");
+  WebApp.MainButton.show();
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />

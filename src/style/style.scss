@@ -1,72 +1,4 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
+// Card styles
 .card {
   height: rem(440px);
   display: flex;
@@ -75,8 +7,14 @@ button:focus-visible {
   align-items: flex-start;
   background-size: cover;
   background-position: center;
+
+  // Padding for card
+  &.padding {
+    padding: 2em;
+  }
 }
 
+// Title styles
 .title {
   font-weight: 900;
   color: var(--mantine-color-white);
@@ -86,6 +24,7 @@ button:focus-visible {
   cursor: default;
 }
 
+// Category styles
 .category {
   color: var(--mantine-color-white);
   opacity: 0.7;
@@ -94,6 +33,7 @@ button:focus-visible {
   cursor: default;
 }
 
+// Root styles
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -101,19 +41,23 @@ button:focus-visible {
   text-align: center;
 }
 
+// Logo styles
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+  &:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+  }
+
+  &.react:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa);
+  }
 }
 
+// Animation for logo
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -123,20 +67,19 @@ button:focus-visible {
   }
 }
 
+// Media query for reduced motion
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
 }
 
-.card {
-  padding: 2em;
-}
-
+// Read the docs styles
 .read-the-docs {
   color: #888;
 }
 
+// Header styles
 .header {
   height: rem(60px);
   padding-left: var(--mantine-spacing-md);
@@ -145,6 +88,7 @@ button:focus-visible {
     light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
 }
 
+// Link styles
 .link {
   display: flex;
   align-items: center;
@@ -156,12 +100,14 @@ button:focus-visible {
   font-weight: 500;
   font-size: var(--mantine-font-size-sm);
 
+  // Media query for smaller screens
   @media (max-width: $mantine-breakpoint-sm) {
     height: rem(42px);
     width: 100%;
   }
 
-  @mixin hover {
+  // Hover effect for link
+  &:hover {
     background-color: light-dark(
       var(--mantine-color-gray-0),
       var(--mantine-color-dark-6)
@@ -169,12 +115,14 @@ button:focus-visible {
   }
 }
 
+// SubLink styles
 .subLink {
   width: 100%;
   padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
   border-radius: var(--mantine-radius-md);
 
-  @mixin hover {
+  // Hover effect for subLink
+  &:hover {
     background-color: light-dark(
       var(--mantine-color-gray-0),
       var(--mantine-color-dark-7)
@@ -182,6 +130,7 @@ button:focus-visible {
   }
 }
 
+// DropdownFooter styles
 .dropdownFooter {
   background-color: light-dark(
     var(--mantine-color-gray-0),

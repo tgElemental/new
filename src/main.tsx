@@ -70,7 +70,14 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Notifications />
         <Router>
           <AppShell header={{ height: 60 }} footer={{ height: 60 }}>
-            <AppShell.Header p="10">
+            <AppShell.Header
+              p="10"
+              style={{
+                background: "linear-gradient(180deg, #0e87cc  30%, #c3b091)",
+                color: "white",
+                fontWeight: 100,
+              }}
+            >
               <Nav />
             </AppShell.Header>
             <AppShell.Main pt="80">

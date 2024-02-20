@@ -10,7 +10,7 @@ import WebApp from "@twa-dev/sdk";
 function App() {
   WebApp.ready();
   WebApp.setBackgroundColor("#C3B091");
-  WebApp.setHeaderColor("#C3B091");
+  WebApp.setHeaderColor("#0e87cc");
   WebApp.enableClosingConfirmation;
   WebApp.BackButton.show();
   WebApp.MainButton.color = "#C3B091";

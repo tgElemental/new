@@ -4,10 +4,17 @@ import App from "./App.tsx";
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
 import "@mantine/carousel/styles.css";
-import { DirectionProvider, MantineProvider, createTheme } from "@mantine/core";
+import {
+  AppShell,
+  DirectionProvider,
+  MantineProvider,
+  createTheme,
+} from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { NavigationProgress } from "@mantine/nprogress";
 import { clarity } from "react-microsoft-clarity";
+import Nav from "./components/Nav.tsx";
+import { MemoryRouter as Router } from "react-router-dom";
 
 clarity.init("kzhxxy2ip7");
 clarity.consent();
@@ -60,7 +67,16 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <MantineProvider defaultColorScheme="light" theme={theme}>
         <NavigationProgress />
         <Notifications />
-        <App />
+        <Router>
+          <AppShell>
+            <AppShell.Header>
+              <Nav />
+            </AppShell.Header>
+            <AppShell.Main>
+              <App />
+            </AppShell.Main>
+          </AppShell>
+        </Router>
       </MantineProvider>
     </DirectionProvider>
   </React.StrictMode>,

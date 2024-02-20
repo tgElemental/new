@@ -12,7 +12,6 @@ export default function Nav() {
             leftSection={<IconHome2 size={14} />}
             size="compact-xs"
           >
-            {" "}
             شروع
           </Button>
         </Link>
@@ -22,7 +21,6 @@ export default function Nav() {
             rightSection={<IconDownload size={14} />}
             size="compact-xs"
           >
-            {" "}
             راهنما
           </Button>
         </Link>
@@ -33,7 +31,6 @@ export default function Nav() {
             rightSection={<IconDownload size={14} />}
             size="compact-xs"
           >
-            {" "}
             بازی
           </Button>
         </Link>

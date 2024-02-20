@@ -1,8 +1,6 @@
 import { Text, Button, Paper, Title, useMantineTheme } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 import { useMediaQuery } from "@mantine/hooks";
-import Nav from "../components/Nav";
-
 const data = [
   {
     image:
@@ -70,7 +68,6 @@ function HomePage() {
   ));
   return (
     <>
-      <Nav />
       <Carousel
         slideSize={{ base: "100%", sm: "50%" }}
         slideGap={{ base: "xl", sm: 2 }}

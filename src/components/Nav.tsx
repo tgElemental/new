@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Nav() {
   return (
-    <Group grow>
+    <Group h="100%" grow>
       <Link to={"/"}>
         <Button
           variant="gradient"

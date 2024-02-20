@@ -6,6 +6,7 @@ import "@mantine/notifications/styles.css";
 import "@mantine/carousel/styles.css";
 import {
   AppShell,
+  Center,
   DirectionProvider,
   MantineProvider,
   createTheme,
@@ -68,13 +69,24 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <NavigationProgress />
         <Notifications />
         <Router>
-          <AppShell>
-            <AppShell.Header>
+          <AppShell header={{ height: 60 }} footer={{ height: 60 }}>
+            <AppShell.Header p="10">
               <Nav />
             </AppShell.Header>
-            <AppShell.Main>
+            <AppShell.Main pt="80">
               <App />
             </AppShell.Main>
+            <AppShell.Footer>
+              <Center
+                h="100%"
+                style={{
+                  background: "linear-gradient(45deg, #0e87cc  30%, #c3b091)",
+                  color: "white",
+                }}
+              >
+                بازی عناصر | ©️ 1402
+              </Center>
+            </AppShell.Footer>
           </AppShell>
         </Router>
       </MantineProvider>

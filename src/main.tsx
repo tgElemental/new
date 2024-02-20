@@ -69,7 +69,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <NavigationProgress />
         <Notifications />
         <Router>
-          <AppShell header={{ height: 60 }} footer={{ height: 30 }}>
+          <AppShell header={{ height: 80 }} footer={{ height: 30 }}>
             <AppShell.Header
               p="10"
               style={{

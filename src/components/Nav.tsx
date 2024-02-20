@@ -1,5 +1,12 @@
 import { Button, Group } from "@mantine/core";
-import { IconDownload, IconHome2 } from "@tabler/icons-react";
+import {
+  IconBrandAppleArcade,
+  IconChartBar,
+  IconHeartHandshake,
+  IconHome2,
+  IconInfoOctagonFilled,
+  IconPackage,
+} from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 
 export default function Nav() {
@@ -21,7 +28,7 @@ export default function Nav() {
           <Button
             variant="gradient"
             gradient={reversgradient}
-            rightSection={<IconDownload size={14} />}
+            leftSection={<IconInfoOctagonFilled size={14} />}
             size="compact-xs"
           >
             راهنما
@@ -32,7 +39,7 @@ export default function Nav() {
           <Button
             variant="gradient"
             gradient={reversgradient}
-            rightSection={<IconDownload size={14} />}
+            leftSection={<IconBrandAppleArcade size={14} />}
             size="compact-xs"
           >
             بازی
@@ -43,7 +50,7 @@ export default function Nav() {
         <Link to={"/invite"}>
           <Button
             variant="gradient"
-            rightSection={<IconDownload size={14} />}
+            leftSection={<IconHeartHandshake size={14} />}
             size="compact-xs"
           >
             دعوت
@@ -53,7 +60,7 @@ export default function Nav() {
         <Link to={"/ranking"}>
           <Button
             variant="gradient"
-            rightSection={<IconDownload size={14} />}
+            leftSection={<IconChartBar size={14} />}
             size="compact-xs"
           >
             رده‌بندی
@@ -63,7 +70,7 @@ export default function Nav() {
         <Link to={"/elements"}>
           <Button
             variant="gradient"
-            rightSection={<IconDownload size={14} />}
+            leftSection={<IconPackage size={14} />}
             size="compact-xs"
           >
             عناصر

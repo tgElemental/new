@@ -86,7 +86,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             >
               <Nav />
             </AppShell.Header>
-            <AppShell.Main pt="80" pr={"xs"} pl={"xs"} pb="80">
+            <AppShell.Main pt="80" pr={"xs"} pl={"xs"} pb="80" mb="80">
               <App />
             </AppShell.Main>
             <AppShell.Footer>

@@ -84,6 +84,8 @@ const RankingPage = () => {
           <Stack
             // h={300}
             pt={"lg"}
+            pr={"xs"}
+            pl={"xs"}
             bg="var(--mantine-color-body)"
             align="flex-start"
             gap="xs"

@@ -1,20 +1,17 @@
 import { Button, Group } from "@mantine/core";
 import {
-  IconBrandAppleArcade,
   IconChartBar,
   IconHeartHandshake,
-  IconHome2,
-  IconInfoOctagonFilled,
   IconPackage,
 } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 
 export default function Nav() {
-  const reversgradient = { from: "#c3b091", to: "#0e87cc", deg: 45 };
+  // const reversgradient = { from: "#c3b091", to: "#0e87cc", deg: 45 };
   return (
     <>
       <Group gap="xs">
-        <Link to={"/"}>
+        {/* <Link to={"/"}>
           <Button
             variant="gradient"
             gradient={reversgradient}
@@ -46,7 +43,7 @@ export default function Nav() {
           </Button>
         </Link>
       </Group>
-      <Group justify="flex-end" gap="xs">
+      <Group justify="flex-end" gap="xs"> */}
         <Link to={"/invite"}>
           <Button
             variant="gradient"

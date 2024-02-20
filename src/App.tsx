@@ -14,12 +14,6 @@ function App() {
   WebApp.setHeaderColor("#0e87cc");
   WebApp.enableClosingConfirmation;
   WebApp.BackButton.show();
-  WebApp.MainButton.color = "#C3B091";
-  WebApp.MainButton.onClick(() => {
-    WebApp.openTelegramLink("https://t.me/ElementalGameBot");
-  });
-  WebApp.MainButton.setText("بازی");
-  WebApp.MainButton.show();
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />

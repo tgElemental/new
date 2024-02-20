@@ -6,8 +6,9 @@ import "@mantine/notifications/styles.css";
 import "@mantine/carousel/styles.css";
 import {
   AppShell,
-  Center,
+  Button,
   DirectionProvider,
+  Flex,
   MantineProvider,
   createTheme,
 } from "@mantine/core";
@@ -15,7 +16,12 @@ import { Notifications } from "@mantine/notifications";
 import { NavigationProgress } from "@mantine/nprogress";
 import { clarity } from "react-microsoft-clarity";
 import Nav from "./components/Nav.tsx";
-import { MemoryRouter as Router } from "react-router-dom";
+import { Link, MemoryRouter as Router } from "react-router-dom";
+import {
+  IconBrandAppleArcade,
+  IconHome2,
+  IconInfoOctagonFilled,
+} from "@tabler/icons-react";
 
 clarity.init("kzhxxy2ip7");
 clarity.consent();
@@ -69,7 +75,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <NavigationProgress />
         <Notifications />
         <Router>
-          <AppShell header={{ height: 80 }} footer={{ height: 30 }}>
+          <AppShell header={{ height: 80 }} footer={{ height: 80 }}>
             <AppShell.Header
               p="10"
               style={{
@@ -80,11 +86,34 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             >
               <Nav />
             </AppShell.Header>
-            <AppShell.Main pt="80" pr={"xs"} pl={"xs"} pb="0">
+            <AppShell.Main pt="80" pr={"xs"} pl={"xs"} pb={"xs"}>
               <App />
             </AppShell.Main>
             <AppShell.Footer>
-              <Center
+              <Flex
+                mih={80}
+                bg="rgba(0, 0, 0, .3)"
+                gap="xl"
+                justify="center"
+                align="center"
+                direction="row"
+                // wrap="wrap"
+              >
+                <Link to={"/"}>
+                  <Button leftSection={<IconHome2 size={14} />}>شروع</Button>
+                </Link>
+                <Link to={"/game"}>
+                  <Button leftSection={<IconBrandAppleArcade size={14} />}>
+                    بازی
+                  </Button>
+                </Link>
+                <Link to={"/help"}>
+                  <Button leftSection={<IconInfoOctagonFilled size={14} />}>
+                    راهنما
+                  </Button>
+                </Link>
+              </Flex>
+              {/* <Center
                 h="100%"
                 style={{
                   background: "linear-gradient(180deg, #0e87cc  30%, #c3b091)",
@@ -93,7 +122,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                 }}
               >
                 بازی عناصر | ©️ 1402
-              </Center>
+              </Center> */}
             </AppShell.Footer>
           </AppShell>
         </Router>

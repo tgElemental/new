@@ -6,11 +6,12 @@ import "@mantine/notifications/styles.css";
 import "@mantine/carousel/styles.css";
 import {
   AppShell,
-  Button,
   DirectionProvider,
   Flex,
   MantineProvider,
+  UnstyledButton,
   createTheme,
+  rem,
 } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { NavigationProgress } from "@mantine/nprogress";
@@ -100,17 +101,35 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                 // wrap="wrap"
               >
                 <Link to={"/"}>
-                  <Button leftSection={<IconHome2 size={14} />}>شروع</Button>
+                  <UnstyledButton
+                    style={{ textAlign: "center", color: "white" }}
+                  >
+                    <IconHome2 style={{ width: rem(24), height: rem(24) }} />{" "}
+                    <br />
+                    شروع
+                  </UnstyledButton>
                 </Link>
                 <Link to={"/game"}>
-                  <Button leftSection={<IconBrandAppleArcade size={14} />}>
+                  <UnstyledButton
+                    style={{ textAlign: "center", color: "white" }}
+                  >
+                    <IconBrandAppleArcade
+                      style={{ width: rem(24), height: rem(24) }}
+                    />{" "}
+                    <br />
                     بازی
-                  </Button>
+                  </UnstyledButton>
                 </Link>
                 <Link to={"/help"}>
-                  <Button leftSection={<IconInfoOctagonFilled size={14} />}>
+                  <UnstyledButton
+                    style={{ textAlign: "center", color: "white" }}
+                  >
+                    <IconInfoOctagonFilled
+                      style={{ width: rem(24), height: rem(24) }}
+                    />{" "}
+                    <br />
                     راهنما
-                  </Button>
+                  </UnstyledButton>
                 </Link>
               </Flex>
               {/* <Center

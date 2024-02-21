@@ -105,8 +105,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               >
                 <Link to={"/"}>
                   <UnstyledButton
-                    mr={"md"}
-                    ml={"md"}
+                    mr={"xs"}
+                    ml={"xs"}
                     style={{ textAlign: "center", color: "white" }}
                   >
                     <IconHome2 style={{ width: rem(24), height: rem(24) }} />
@@ -125,8 +125,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                     processing
                   >
                     <UnstyledButton
-                      mr={"md"}
-                      ml={"md"}
+                      mr={"xs"}
+                      ml={"xs"}
                       style={{ textAlign: "center", color: "white" }}
                     >
                       <IconPackage
@@ -141,8 +141,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                 <Link to={"/game"}>
                   <Indicator label="به‌زودی" position="top-start" size={16}>
                     <UnstyledButton
-                      mr={"md"}
-                      ml={"md"}
+                      mr={"xs"}
+                      ml={"xs"}
                       style={{ textAlign: "center", color: "white" }}
                     >
                       <IconBrandAppleArcade
@@ -162,8 +162,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                     processing
                   >
                     <UnstyledButton
-                      mr={"md"}
-                      ml={"md"}
+                      mr={"xs"}
+                      ml={"xs"}
                       style={{ textAlign: "center", color: "white" }}
                     >
                       <IconChartBar
@@ -177,8 +177,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 
                 <Link to={"/help"}>
                   <UnstyledButton
-                    mr={"md"}
-                    ml={"md"}
+                    mr={"xs"}
+                    ml={"xs"}
                     style={{ textAlign: "center", color: "white" }}
                   >
                     <IconInfoOctagonFilled

@@ -26,6 +26,7 @@ import {
   IconInfoOctagonFilled,
   IconPackage,
 } from "@tabler/icons-react";
+import useUser from "./hooks/useUser.tsx";
 
 clarity.init("kzhxxy2ip7");
 clarity.consent();
@@ -72,8 +73,19 @@ const theme = createTheme({
     ],
   },
 });
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+// const user = useUser();
+// const allelements = user.earth + user.fire + user.water + user.wind;
+// ReactDOM.createRoot(document.getElementById("root")!).render(
+//   <React.StrictMode>
+
+//   </React.StrictMode>,
+// );
+
+const Wrapper = () => {
+  const user = useUser();
+  const allelements = user.earth + user.fire + user.water + user.wind;
+
+  return (
     <DirectionProvider initialDirection="rtl">
       <MantineProvider defaultColorScheme="light" theme={theme}>
         <NavigationProgress />
@@ -119,10 +131,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                   <Indicator
                     inline
                     color="red"
-                    position="top-center"
-                    size={10}
+                    position="top-start"
+                    size={20}
                     withBorder
                     processing
+                    label={allelements}
                   >
                     <UnstyledButton
                       mr={"xs"}
@@ -194,5 +207,12 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         </Router>
       </MantineProvider>
     </DirectionProvider>
+  );
+};
+
+// Now, instead of calling useUser directly, render the Wrapper component
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <Wrapper />
   </React.StrictMode>,
 );

@@ -1,6 +1,7 @@
 import { Blockquote, Box, SimpleGrid } from "@mantine/core";
 import data from "@emoji-mart/data";
 import { init } from "emoji-mart";
+import useUser from "../hooks/useUser";
 
 init({ data });
 declare global {
@@ -14,6 +15,7 @@ declare global {
 }
 
 const ElementsPage = () => {
+  const user = useUser();
   const treeemoji = <em-emoji id="deciduous_tree" Size="2em"></em-emoji>;
   const lightemoji = <em-emoji id="sunny" Size="2em"></em-emoji>;
   const windemoji = <em-emoji id="wind_blowing_face" Size="2em"></em-emoji>;
@@ -32,6 +34,7 @@ const ElementsPage = () => {
           mt="xl"
         >
           درخت از برخورد خاک و آب برای شما ایجاد می‌شود
+          <br /> موجودی : {user.tree}
         </Blockquote>
       </Box>
       <Box mb={"xl"} p={"md"}>
@@ -43,6 +46,7 @@ const ElementsPage = () => {
           mt="xl"
         >
           نور از برخورد باد و آتش برای شما ایجاد می‌شود
+          <br /> موجودی : {user.light}
         </Blockquote>
       </Box>
       <SimpleGrid cols={2}>
@@ -55,6 +59,7 @@ const ElementsPage = () => {
             mt="xs"
           >
             عنصر باد
+            <br /> موجودی : {user.wind}
           </Blockquote>
         </Box>
         <Box m={"xs"} p={"ms"}>
@@ -66,6 +71,7 @@ const ElementsPage = () => {
             mt="xs"
           >
             عنصر خاک
+            <br /> موجودی : {user.earth}
           </Blockquote>
         </Box>
         <Box m={"xs"} p={"ms"}>
@@ -77,6 +83,7 @@ const ElementsPage = () => {
             mt="xs"
           >
             عنصر آب
+            <br /> موجودی : {user.water}
           </Blockquote>
         </Box>
         <Box m={"xs"} p={"ms"}>
@@ -88,6 +95,7 @@ const ElementsPage = () => {
             mt="xs"
           >
             آتش
+            <br /> موجودی : {user.fire}
           </Blockquote>
         </Box>
       </SimpleGrid>

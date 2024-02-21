@@ -97,7 +97,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               <Flex
                 mih={60}
                 bg="rgba(0, 0, 0, .3)"
-                gap="xl"
+                gap="xs"
                 justify="center"
                 align="center"
                 direction="row"

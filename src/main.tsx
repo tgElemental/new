@@ -20,8 +20,10 @@ import Nav from "./components/Nav.tsx";
 import { Link, MemoryRouter as Router } from "react-router-dom";
 import {
   IconBrandAppleArcade,
+  IconChartBar,
   IconHome2,
   IconInfoOctagonFilled,
+  IconPackage,
 } from "@tabler/icons-react";
 
 clarity.init("kzhxxy2ip7");
@@ -106,11 +108,24 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                     ml={"md"}
                     style={{ textAlign: "center", color: "white" }}
                   >
-                    <IconHome2 style={{ width: rem(24), height: rem(24) }} />{" "}
+                    <IconHome2 style={{ width: rem(24), height: rem(24) }} />
                     <br />
                     شروع
                   </UnstyledButton>
                 </Link>
+
+                <Link to={"/elements"}>
+                  <UnstyledButton
+                    mr={"md"}
+                    ml={"md"}
+                    style={{ textAlign: "center", color: "white" }}
+                  >
+                    <IconPackage style={{ width: rem(24), height: rem(24) }} />
+                    <br />
+                    عناصر
+                  </UnstyledButton>
+                </Link>
+
                 <Link to={"/game"}>
                   <UnstyledButton
                     mr={"md"}
@@ -119,11 +134,24 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                   >
                     <IconBrandAppleArcade
                       style={{ width: rem(24), height: rem(24) }}
-                    />{" "}
+                    />
                     <br />
                     بازی
                   </UnstyledButton>
                 </Link>
+
+                <Link to={"/elements"}>
+                  <UnstyledButton
+                    mr={"md"}
+                    ml={"md"}
+                    style={{ textAlign: "center", color: "white" }}
+                  >
+                    <IconChartBar style={{ width: rem(24), height: rem(24) }} />
+                    <br />
+                    رده بندی
+                  </UnstyledButton>
+                </Link>
+
                 <Link to={"/help"}>
                   <UnstyledButton
                     mr={"md"}
@@ -132,7 +160,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                   >
                     <IconInfoOctagonFilled
                       style={{ width: rem(24), height: rem(24) }}
-                    />{" "}
+                    />
                     <br />
                     راهنما
                   </UnstyledButton>

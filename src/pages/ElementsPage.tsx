@@ -1,6 +1,7 @@
 import { Blockquote, Box, SimpleGrid } from "@mantine/core";
 import data from "@emoji-mart/data";
 import { init } from "emoji-mart";
+
 init({ data });
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -19,6 +20,7 @@ const ElementsPage = () => {
   const soilemoji = <em-emoji id="large_brown_circle" Size="2em"></em-emoji>;
   const fireemoji = <em-emoji id="fire" Size="2em"></em-emoji>;
   const wateremoji = <em-emoji id="droplet" Size="2em"></em-emoji>;
+
   return (
     <>
       <Box p={"md"}>

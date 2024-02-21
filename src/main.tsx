@@ -189,16 +189,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                   </UnstyledButton>
                 </Link>
               </Flex>
-              {/* <Center
-                h="100%"
-                style={{
-                  background: "linear-gradient(180deg, #0e87cc  30%, #c3b091)",
-                  color: "white",
-                  fontWeight: 100,
-                }}
-              >
-                بازی عناصر | ©️ 1402
-              </Center> */}
             </AppShell.Footer>
           </AppShell>
         </Router>

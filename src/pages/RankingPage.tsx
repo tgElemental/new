@@ -9,6 +9,7 @@ import {
   Badge,
   Button,
   Stack,
+  Skeleton,
 } from "@mantine/core";
 import data from "@emoji-mart/data";
 import { init } from "emoji-mart";
@@ -50,9 +51,21 @@ const RankingPage = () => {
   return (
     <>
       {loading ? (
-        <Center>
-          <Loader color="blue" size="xl" type="dots" />
-        </Center>
+        <>
+          <SimpleGrid cols={3} p={"xs"}>
+            <Skeleton height={150} width={"100%"} mb="xl" />
+            <Skeleton height={150} width={"100%"} mb="xl" />
+            <Skeleton height={150} width={"100%"} mb="xl" />
+          </SimpleGrid>
+          <Center>
+            <Loader color="blue" size="xl" type="dots" />
+          </Center>
+          <Skeleton height={20} mt={10} p={10} width="100%" radius="xs" />
+          <Skeleton height={20} mt={10} p={10} width="100%" radius="xs" />
+          <Skeleton height={20} mt={10} p={10} width="100%" radius="xs" />
+          <Skeleton height={20} mt={10} p={10} width="100%" radius="xs" />
+          <Skeleton height={20} mt={10} p={10} width="100%" radius="xs" />
+        </>
       ) : (
         <>
           <SimpleGrid cols={3} p={"xs"}>

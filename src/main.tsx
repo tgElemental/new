@@ -91,7 +91,7 @@ const Wrapper = () => {
         <NavigationProgress />
         <Notifications />
         <Router>
-          <AppShell header={{ height: 80 }} footer={{ height: 60 }}>
+          <AppShell header={{ height: 40 }} footer={{ height: 60 }}>
             <AppShell.Header
               p="10"
               style={{
@@ -168,24 +168,15 @@ const Wrapper = () => {
                 </Link>
 
                 <Link to={"/ranking"}>
-                  <Indicator
-                    label="جدید"
-                    position="top-start"
-                    size={16}
-                    processing
+                  <UnstyledButton
+                    mr={"xs"}
+                    ml={"xs"}
+                    style={{ textAlign: "center", color: "white" }}
                   >
-                    <UnstyledButton
-                      mr={"xs"}
-                      ml={"xs"}
-                      style={{ textAlign: "center", color: "white" }}
-                    >
-                      <IconChartBar
-                        style={{ width: rem(24), height: rem(24) }}
-                      />
-                      <br />
-                      رده بندی
-                    </UnstyledButton>
-                  </Indicator>
+                    <IconChartBar style={{ width: rem(24), height: rem(24) }} />
+                    <br />
+                    رده بندی
+                  </UnstyledButton>
                 </Link>
 
                 <Link to={"/help"}>

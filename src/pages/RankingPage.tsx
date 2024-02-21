@@ -94,8 +94,10 @@ const RankingPage = () => {
                   </Text>
                 </Text>
                 <Card.Section mt="sm">
-                  <Group gap="xs" grow>
+                  <Group gap="2px" grow>
                     <Button
+                      variant="light"
+                      size="compact-xs"
                       p={0}
                       m={0}
                       leftSection={
@@ -105,9 +107,11 @@ const RankingPage = () => {
                       {item.score}
                     </Button>
                     <Button
+                      variant="light"
+                      size="compact-xs"
                       p={0}
                       m={0}
-                      rightSection={
+                      leftSection={
                         <em-emoji id="deciduous_tree" Size="1em"></em-emoji>
                       }
                     >

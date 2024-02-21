@@ -8,6 +8,7 @@ import {
   AppShell,
   DirectionProvider,
   Flex,
+  Indicator,
   MantineProvider,
   UnstyledButton,
   createTheme,
@@ -115,41 +116,63 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                 </Link>
 
                 <Link to={"/elements"}>
-                  <UnstyledButton
-                    mr={"md"}
-                    ml={"md"}
-                    style={{ textAlign: "center", color: "white" }}
+                  <Indicator
+                    inline
+                    color="red"
+                    position="top-center"
+                    size={10}
+                    withBorder
+                    processing
                   >
-                    <IconPackage style={{ width: rem(24), height: rem(24) }} />
-                    <br />
-                    عناصر
-                  </UnstyledButton>
+                    <UnstyledButton
+                      mr={"md"}
+                      ml={"md"}
+                      style={{ textAlign: "center", color: "white" }}
+                    >
+                      <IconPackage
+                        style={{ width: rem(24), height: rem(24) }}
+                      />
+                      <br />
+                      عناصر
+                    </UnstyledButton>
+                  </Indicator>
                 </Link>
 
                 <Link to={"/game"}>
-                  <UnstyledButton
-                    mr={"md"}
-                    ml={"md"}
-                    style={{ textAlign: "center", color: "white" }}
-                  >
-                    <IconBrandAppleArcade
-                      style={{ width: rem(24), height: rem(24) }}
-                    />
-                    <br />
-                    بازی
-                  </UnstyledButton>
+                  <Indicator label="به‌زودی" position="top-start" size={16}>
+                    <UnstyledButton
+                      mr={"md"}
+                      ml={"md"}
+                      style={{ textAlign: "center", color: "white" }}
+                    >
+                      <IconBrandAppleArcade
+                        style={{ width: rem(24), height: rem(24) }}
+                      />
+                      <br />
+                      بازی
+                    </UnstyledButton>
+                  </Indicator>
                 </Link>
 
-                <Link to={"/elements"}>
-                  <UnstyledButton
-                    mr={"md"}
-                    ml={"md"}
-                    style={{ textAlign: "center", color: "white" }}
+                <Link to={"/ranking"}>
+                  <Indicator
+                    label="جدید"
+                    position="top-start"
+                    size={16}
+                    processing
                   >
-                    <IconChartBar style={{ width: rem(24), height: rem(24) }} />
-                    <br />
-                    رده بندی
-                  </UnstyledButton>
+                    <UnstyledButton
+                      mr={"md"}
+                      ml={"md"}
+                      style={{ textAlign: "center", color: "white" }}
+                    >
+                      <IconChartBar
+                        style={{ width: rem(24), height: rem(24) }}
+                      />
+                      <br />
+                      رده بندی
+                    </UnstyledButton>
+                  </Indicator>
                 </Link>
 
                 <Link to={"/help"}>

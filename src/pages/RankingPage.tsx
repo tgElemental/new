@@ -89,7 +89,7 @@ const RankingPage = () => {
                   </Group>
                 </Card.Section>
                 <Text mt="sm" c="dimmed" size="sm">
-                  <Text span inherit c="var(--mantine-color-anchor)">
+                  <Text span mih={"50"} inherit c="var(--mantine-color-anchor)">
                     {item.name}
                   </Text>
                 </Text>

@@ -26,10 +26,10 @@ declare global {
 interface RankingItem {
   name: string;
   score: number;
+  tree: number;
 }
 
 const RankingPage = () => {
-  const icon = <em-emoji id="moneybag" Size="2em"></em-emoji>;
   const [data, setData] = useState<RankingItem[]>([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -47,7 +47,17 @@ const RankingPage = () => {
 
     fetchData();
   }, []);
-
+  const getRankText = (index: number) => {
+    if (index === 0) {
+      return <em-emoji id="first_place_medal" Size="4em"></em-emoji>;
+    } else if (index === 1) {
+      return <em-emoji id="second_place_medal" Size="4em"></em-emoji>;
+    } else if (index === 2) {
+      return <em-emoji id="third_place_medal" Size="4em"></em-emoji>;
+    } else {
+      return `نفر ${index + 1}`;
+    }
+  };
   return (
     <>
       {loading ? (
@@ -73,7 +83,9 @@ const RankingPage = () => {
               <Card withBorder shadow="sm" radius="md" key={index}>
                 <Card.Section withBorder inheritPadding py="xs">
                   <Group justify="space-between">
-                    <Text fw={900}>{`نفر ${index + 1}`} </Text>
+                    <Text fw={900} style={{ textAlign: "center" }}>
+                      {getRankText(index)}
+                    </Text>
                   </Group>
                 </Card.Section>
                 <Text mt="sm" c="dimmed" size="sm">
@@ -82,14 +94,26 @@ const RankingPage = () => {
                   </Text>
                 </Text>
                 <Card.Section mt="sm">
-                  <Button
-                    justify="space-between"
-                    fullWidth
-                    leftSection={icon}
-                    variant="default"
-                  >
-                    {item.score}
-                  </Button>
+                  <Group gap="xs" grow>
+                    <Button
+                      p={0}
+                      m={0}
+                      leftSection={
+                        <em-emoji id="moneybag" Size="1em"></em-emoji>
+                      }
+                    >
+                      {item.score}
+                    </Button>
+                    <Button
+                      p={0}
+                      m={0}
+                      rightSection={
+                        <em-emoji id="deciduous_tree" Size="1em"></em-emoji>
+                      }
+                    >
+                      {item.tree}
+                    </Button>
+                  </Group>
                 </Card.Section>
               </Card>
             ))}

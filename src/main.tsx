@@ -76,7 +76,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <NavigationProgress />
         <Notifications />
         <Router>
-          <AppShell header={{ height: 80 }} footer={{ height: 80 }}>
+          <AppShell header={{ height: 80 }} footer={{ height: 60 }}>
             <AppShell.Header
               p="10"
               style={{
@@ -92,7 +92,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             </AppShell.Main>
             <AppShell.Footer>
               <Flex
-                mih={80}
+                mih={60}
                 bg="rgba(0, 0, 0, .3)"
                 gap="xl"
                 justify="center"
@@ -102,6 +102,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               >
                 <Link to={"/"}>
                   <UnstyledButton
+                    mr={"md"}
+                    ml={"md"}
                     style={{ textAlign: "center", color: "white" }}
                   >
                     <IconHome2 style={{ width: rem(24), height: rem(24) }} />{" "}
@@ -111,6 +113,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                 </Link>
                 <Link to={"/game"}>
                   <UnstyledButton
+                    mr={"md"}
+                    ml={"md"}
                     style={{ textAlign: "center", color: "white" }}
                   >
                     <IconBrandAppleArcade
@@ -122,6 +126,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                 </Link>
                 <Link to={"/help"}>
                   <UnstyledButton
+                    mr={"md"}
+                    ml={"md"}
                     style={{ textAlign: "center", color: "white" }}
                   >
                     <IconInfoOctagonFilled

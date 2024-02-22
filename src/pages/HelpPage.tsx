@@ -1,22 +1,19 @@
-import { Center, Loader, SimpleGrid, Skeleton } from "@mantine/core";
+import { Text } from "@mantine/core";
 
 const HelpPage = () => {
   return (
     <>
       <h1>راهنما</h1>
-      <SimpleGrid cols={3} p={"xs"}>
-        <Skeleton height={150} width={"100%"} mb="xl" />
-        <Skeleton height={150} width={"100%"} mb="xl" />
-        <Skeleton height={150} width={"100%"} mb="xl" />
-      </SimpleGrid>
-      <Center>
-        <Loader color="blue" size="xl" type="dots" />
-      </Center>
-      <Skeleton height={20} mt={10} p={10} width="100%" radius="xs" />
-      <Skeleton height={20} mt={10} p={10} width="100%" radius="xs" />
-      <Skeleton height={20} mt={10} p={10} width="100%" radius="xs" />
-      <Skeleton height={20} mt={10} p={10} width="100%" radius="xs" />
-      <Skeleton height={20} mt={10} p={10} width="100%" radius="xs" />
+
+      <h4>قوانین :</h4>
+      <Text>
+        آب از آتش قوی‌تر، آتش از خاک قوی‌تر، خاک از باد قوی‌تر و باد از آب
+        قوی‌تر‌ است
+      </Text>
+
+      <Text>در برخورد آب و خاک، درختان به وجود می‌آیند.</Text>
+
+      <Text>نور حاصل برخورد آتش و باد است.</Text>
     </>
   );
 };

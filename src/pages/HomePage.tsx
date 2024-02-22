@@ -1,6 +1,10 @@
 import { Text, Button, Group, Container } from "@mantine/core";
 import classes from "./HeroTitle.module.css";
-import { IconHeartHandshake } from "@tabler/icons-react";
+import {
+  IconBrandAppleArcade,
+  IconHeartHandshake,
+  IconInfoOctagonFilled,
+} from "@tabler/icons-react";
 function HomePage() {
   return (
     <>
@@ -27,21 +31,29 @@ function HomePage() {
           </Text>
           <Group className={classes.controls}>
             <Button
-              size="xl"
+              size="lg"
+              className={classes.control}
+              variant="gradient"
+              gradient={{ from: "orange", to: "black" }}
+              leftSection={<IconHeartHandshake size={20} />}
+            >
+              دعوت قهرمانان جدید
+            </Button>
+            <Button
+              size="lg"
               className={classes.control}
               variant="gradient"
               gradient={{ from: "blue", to: "cyan" }}
+              leftSection={<IconInfoOctagonFilled size={20} />}
             >
               راهنما
             </Button>
 
             <Button
-              component="a"
-              href="https://github.com/mantinedev/mantine"
-              size="xl"
+              size="lg"
               variant="default"
               className={classes.control}
-              leftSection={<IconHeartHandshake size={20} />}
+              leftSection={<IconBrandAppleArcade size={20} />}
             >
               بازی
             </Button>

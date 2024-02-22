@@ -99,7 +99,8 @@ function HomePage() {
           </h2>
 
           <Text className={classes.description} color="dimmed">
-            آب
+            آب از آتش قوی‌تر، آتش از خاک قوی‌تر، خاک از باد قویتر و باد از آب
+            قویتر‌است
           </Text>
 
           <Group className={classes.controls}>

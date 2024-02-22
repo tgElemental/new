@@ -1,6 +1,17 @@
-import { Text, Button, Paper, Title, useMantineTheme } from "@mantine/core";
+import {
+  Text,
+  Button,
+  Paper,
+  Title,
+  useMantineTheme,
+  Group,
+  Container,
+} from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 import { useMediaQuery } from "@mantine/hooks";
+import classes from "./HeroTitle.module.css";
+import { IconHeartHandshake } from "@tabler/icons-react";
+
 const data = [
   {
     image:
@@ -69,6 +80,51 @@ function HomePage() {
   ));
   return (
     <>
+      <div className={classes.wrapper}>
+        <Container size={"xs"} className={classes.inner}>
+          <h2 className={classes.title}>
+            این بازی بر اساس چهار عنصر
+            <br />
+            <Text
+              ta="center"
+              component="span"
+              variant="gradient"
+              gradient={{ to: "#0e87cc", from: "#c3b091" }}
+              inherit
+            >
+              آب، باد، آتش و خاک
+            </Text>
+            <br />
+            انجام می‌شود.
+          </h2>
+
+          <Text className={classes.description} color="dimmed">
+            آب
+          </Text>
+
+          <Group className={classes.controls}>
+            <Button
+              size="xl"
+              className={classes.control}
+              variant="gradient"
+              gradient={{ from: "blue", to: "cyan" }}
+            >
+              Get started
+            </Button>
+
+            <Button
+              component="a"
+              href="https://github.com/mantinedev/mantine"
+              size="xl"
+              variant="default"
+              className={classes.control}
+              leftSection={<IconHeartHandshake size={20} />}
+            >
+              GitHub
+            </Button>
+          </Group>
+        </Container>
+      </div>
       <Carousel
         slideSize={{ base: "100%", sm: "50%" }}
         slideGap={{ base: "xl", sm: 2 }}

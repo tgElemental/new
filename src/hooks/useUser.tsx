@@ -14,6 +14,7 @@ const useUser = () => {
     water: 0,
     tree: 0,
     light: 0,
+    invited_count: 0,
   });
 
   useEffect(() => {

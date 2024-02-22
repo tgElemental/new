@@ -15,10 +15,12 @@ const InvitePage = () => {
     <>
       <h1>دعوت دوستان</h1>
       کد معرف شما : {invitelink} <br />
-      دوستان خود را به بازی عناصر دعوت کنید با دعوت هر نفر ۲۰ عنصر جدید دریافت{" "}
+      دوستان خود را به بازی عناصر دعوت کنید با دعوت هر نفر ۲۰ عنصر جدید دریافت
       <br />
       میکنید ۵ عدد از هر عنصر <br />
       <Button onClick={invite}>دعوت</Button>
+      <br />
+      دعوت شده های شما : {user.invited_count}
       {/* <SimpleGrid cols={3} p={"xs"}>
         <Skeleton height={150} width={"100%"} mb="xl" />
         <Skeleton height={150} width={"100%"} mb="xl" />

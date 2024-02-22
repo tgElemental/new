@@ -5,6 +5,7 @@ import {
   IconHeartHandshake,
   IconInfoOctagonFilled,
 } from "@tabler/icons-react";
+import { Link } from "react-router-dom";
 function HomePage() {
   return (
     <>
@@ -30,33 +31,40 @@ function HomePage() {
             جدید پرورش دهید و سرسبزی و تعادل را به جهان برگردانید.
           </Text>
           <Group className={classes.controls}>
-            <Button
-              size="lg"
-              className={classes.control}
-              variant="gradient"
-              gradient={{ from: "orange", to: "black" }}
-              leftSection={<IconHeartHandshake size={20} />}
-            >
-              دعوت قهرمانان جدید
-            </Button>
-            <Button
-              size="lg"
-              className={classes.control}
-              variant="gradient"
-              gradient={{ from: "blue", to: "cyan" }}
-              leftSection={<IconInfoOctagonFilled size={20} />}
-            >
-              راهنما
-            </Button>
+            <Link to={"/invite"}>
+              <Button
+                size="lg"
+                className={classes.control}
+                variant="gradient"
+                gradient={{ from: "orange", to: "black" }}
+                leftSection={<IconHeartHandshake size={20} />}
+              >
+                دعوت قهرمانان جدید
+              </Button>
+            </Link>
 
-            <Button
-              size="lg"
-              variant="default"
-              className={classes.control}
-              leftSection={<IconBrandAppleArcade size={20} />}
-            >
-              بازی
-            </Button>
+            <Link to={"/help"}>
+              <Button
+                size="lg"
+                className={classes.control}
+                variant="gradient"
+                gradient={{ from: "blue", to: "cyan" }}
+                leftSection={<IconInfoOctagonFilled size={20} />}
+              >
+                راهنما
+              </Button>
+            </Link>
+
+            <Link to={"/game"}>
+              <Button
+                size="lg"
+                variant="default"
+                className={classes.control}
+                leftSection={<IconBrandAppleArcade size={20} />}
+              >
+                بازی
+              </Button>
+            </Link>
           </Group>
         </Container>
       </div>

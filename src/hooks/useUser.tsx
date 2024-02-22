@@ -6,7 +6,7 @@ const userdata = WebApp.initDataUnsafe;
 
 const useUser = () => {
   const [user, setUser] = useSetState({
-    id: null,
+    userid: 0,
     name: "",
     fire: 0,
     wind: 0,

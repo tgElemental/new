@@ -14,10 +14,6 @@ function App() {
   WebApp.setHeaderColor("#0e87cc");
   WebApp.enableClosingConfirmation;
   WebApp.BackButton.show();
-  const userdata = WebApp.initDataUnsafe;
-  console.log(userdata);
-  console.log("===========");
-  console.log(WebApp);
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />

@@ -18,26 +18,58 @@ declare global {
 }
 const GamePage = () => {
   // Create an array of states for each card
-  const [{ x: x1, y: y1 }, api1] = useSpring(() => ({ x: 0, y: 0 }));
-  const [{ x: x2, y: y2 }, api2] = useSpring(() => ({ x: 0, y: 0 }));
-  const [{ x: x3, y: y3 }, api3] = useSpring(() => ({ x: 0, y: 0 }));
-  const [{ x: x4, y: y4 }, api4] = useSpring(() => ({ x: 0, y: 0 }));
+  const [{ x: x1, y: y1, border: border1, scale: scale1 }, api1] = useSpring(
+    () => ({ x: 0, y: 0, border: "none", scale: 1 }),
+  );
+  const [{ x: x2, y: y2, border: border2, scale: scale2 }, api2] = useSpring(
+    () => ({ x: 0, y: 0, border: "none", scale: 1 }),
+  );
+  const [{ x: x3, y: y3, border: border3, scale: scale3 }, api3] = useSpring(
+    () => ({ x: 0, y: 0, border: "none", scale: 1 }),
+  );
+  const [{ x: x4, y: y4, border: border4, scale: scale4 }, api4] = useSpring(
+    () => ({ x: 0, y: 0, border: "none", scale: 1 }),
+  );
 
   // Define the drag hooks for each card
-  const bind1 = useDrag(({ down, movement: [mx, my] }) => {
-    api1.start({ x: down ? mx : 0, y: down ? my : 0, immediate: down });
+  const bind1 = useDrag(({ active, down, movement: [mx, my] }) => {
+    api1.start({
+      x: down ? mx : 0,
+      y: down ? my : 0,
+      immediate: down,
+      border: active ? "solid 2px blue" : "none",
+      scale: active ? 1.2 : 1,
+    });
   });
 
-  const bind2 = useDrag(({ down, movement: [mx, my] }) => {
-    api2.start({ x: down ? mx : 0, y: down ? my : 0, immediate: down });
+  const bind2 = useDrag(({ active, down, movement: [mx, my] }) => {
+    api2.start({
+      x: down ? mx : 0,
+      y: down ? my : 0,
+      immediate: down,
+      border: active ? "solid 2px blue" : "none",
+      scale: active ? 1.2 : 1,
+    });
   });
 
-  const bind3 = useDrag(({ down, movement: [mx, my] }) => {
-    api3.start({ x: down ? mx : 0, y: down ? my : 0, immediate: down });
+  const bind3 = useDrag(({ active, down, movement: [mx, my] }) => {
+    api3.start({
+      x: down ? mx : 0,
+      y: down ? my : 0,
+      immediate: down,
+      border: active ? "solid 2px blue" : "none",
+      scale: active ? 1.2 : 1,
+    });
   });
 
-  const bind4 = useDrag(({ down, movement: [mx, my] }) => {
-    api4.start({ x: down ? mx : 0, y: down ? my : 0, immediate: down });
+  const bind4 = useDrag(({ active, down, movement: [mx, my] }) => {
+    api4.start({
+      x: down ? mx : 0,
+      y: down ? my : 0,
+      immediate: down,
+      border: active ? "solid 2px blue" : "none",
+      scale: active ? 1.2 : 1,
+    });
   });
   const windemoji = <em-emoji id="wind_blowing_face" Size="2em"></em-emoji>;
   const soilemoji = <em-emoji id="large_brown_circle" Size="2em"></em-emoji>;
@@ -52,7 +84,7 @@ const GamePage = () => {
         m={"xl"}
         p={"lg"}
         style={{
-          height: "100px",
+          height: "200px",
           border: "2px dashed #ccc",
           display: "flex",
           justifyContent: "center",
@@ -65,7 +97,16 @@ const GamePage = () => {
       </Box>
 
       <Group justify="center" gap="xl" grow>
-        <animated.div {...bind1()} style={{ x: x1, y: y1 }}>
+        <animated.div
+          {...bind1()}
+          style={{
+            x: x1,
+            y: y1,
+            borderLeft: border1,
+            borderBottom: border1,
+            scale: scale1,
+          }}
+        >
           <Blockquote
             color="blue"
             radius="xs"
@@ -77,7 +118,16 @@ const GamePage = () => {
           </Blockquote>
         </animated.div>
 
-        <animated.div {...bind2()} style={{ x: x2, y: y2 }}>
+        <animated.div
+          {...bind2()}
+          style={{
+            x: x2,
+            y: y2,
+            borderLeft: border2,
+            borderBottom: border2,
+            scale: scale2,
+          }}
+        >
           <Blockquote
             color="teal"
             radius="xs"
@@ -89,7 +139,16 @@ const GamePage = () => {
           </Blockquote>
         </animated.div>
 
-        <animated.div {...bind3()} style={{ x: x3, y: y3 }}>
+        <animated.div
+          {...bind3()}
+          style={{
+            x: x3,
+            y: y3,
+            borderLeft: border3,
+            borderBottom: border3,
+            scale: scale3,
+          }}
+        >
           <Blockquote
             color="brown"
             radius="xs"
@@ -101,7 +160,16 @@ const GamePage = () => {
           </Blockquote>
         </animated.div>
 
-        <animated.div {...bind4()} style={{ x: x4, y: y4 }}>
+        <animated.div
+          {...bind4()}
+          style={{
+            x: x4,
+            y: y4,
+            borderLeft: border4,
+            borderBottom: border4,
+            scale: scale4,
+          }}
+        >
           <Blockquote
             color="orange"
             radius="xs"

@@ -1,4 +1,4 @@
-import { Blockquote, Box, SimpleGrid } from "@mantine/core";
+import { Blockquote, Box, Indicator, SimpleGrid } from "@mantine/core";
 import data from "@emoji-mart/data";
 import { init } from "emoji-mart";
 import useUser from "../hooks/useUser";
@@ -33,8 +33,17 @@ const ElementsPage = () => {
           icon={treeemoji}
           mt="xl"
         >
-          درخت از برخورد خاک و آب برای شما ایجاد می‌شود
-          <br /> موجودی : {user.tree}
+          <Indicator
+            color="teal"
+            size="lg"
+            radius="md"
+            label={user.tree}
+            position="middle-start"
+            withBorder
+            processing
+          >
+            درخت از برخورد خاک و آب برای شما ایجاد می‌شود
+          </Indicator>
         </Blockquote>
       </Box>
       <Box mb={"xl"} p={"md"}>
@@ -45,8 +54,17 @@ const ElementsPage = () => {
           icon={lightemoji}
           mt="xl"
         >
-          نور از برخورد باد و آتش برای شما ایجاد می‌شود
-          <br /> موجودی : {user.light}
+          <Indicator
+            color="lime"
+            size="lg"
+            radius="md"
+            label={user.light}
+            position="middle-start"
+            withBorder
+            processing
+          >
+            نور از برخورد باد و آتش برای شما ایجاد می‌شود
+          </Indicator>
         </Blockquote>
       </Box>
       <SimpleGrid cols={2}>
@@ -58,8 +76,17 @@ const ElementsPage = () => {
             icon={windemoji}
             mt="xs"
           >
-            عنصر باد
-            <br /> موجودی : {user.wind}
+            <Indicator
+              color="cyan"
+              size="lg"
+              radius="sm"
+              label={user.wind}
+              position="middle-start"
+              withBorder
+              processing
+            >
+              باد
+            </Indicator>
           </Blockquote>
         </Box>
         <Box m={"xs"} p={"ms"}>
@@ -70,8 +97,17 @@ const ElementsPage = () => {
             icon={soilemoji}
             mt="xs"
           >
-            عنصر خاک
-            <br /> موجودی : {user.earth}
+            <Indicator
+              color="brown"
+              size="lg"
+              radius="sm"
+              label={user.earth}
+              position="middle-start"
+              withBorder
+              processing
+            >
+              خاک
+            </Indicator>
           </Blockquote>
         </Box>
         <Box m={"xs"} p={"ms"}>
@@ -82,8 +118,17 @@ const ElementsPage = () => {
             icon={wateremoji}
             mt="xs"
           >
-            عنصر آب
-            <br /> موجودی : {user.water}
+            <Indicator
+              color="blue"
+              size="lg"
+              radius="sm"
+              label={user.water}
+              position="middle-start"
+              withBorder
+              processing
+            >
+              آب
+            </Indicator>
           </Blockquote>
         </Box>
         <Box m={"xs"} p={"ms"}>
@@ -94,8 +139,17 @@ const ElementsPage = () => {
             icon={fireemoji}
             mt="xs"
           >
-            آتش
-            <br /> موجودی : {user.fire}
+            <Indicator
+              color="orange"
+              size="lg"
+              radius="sm"
+              label={user.fire}
+              position="middle-start"
+              withBorder
+              processing
+            >
+              آتش
+            </Indicator>
           </Blockquote>
         </Box>
       </SimpleGrid>

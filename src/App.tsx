@@ -1,5 +1,8 @@
 import HomePage from "./pages/HomePage";
 import { Route, Routes } from "react-router-dom";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+
 import ProfilePage from "./pages/ProfilePage";
 import GamePage from "./pages/GamePage";
 import HelpPage from "./pages/HelpPage";
@@ -15,15 +18,17 @@ function App() {
   WebApp.enableClosingConfirmation;
   WebApp.BackButton.show();
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/profile" element={<ProfilePage />} />
-      <Route path="/game" element={<GamePage />} />
-      <Route path="/help" element={<HelpPage />} />
-      <Route path="/invite" element={<InvitePage />} />
-      <Route path="/ranking" element={<RankingPage />} />
-      <Route path="/elements" element={<ElementsPage />} />
-    </Routes>
+    <DndProvider backend={HTML5Backend}>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/game" element={<GamePage />} />
+        <Route path="/help" element={<HelpPage />} />
+        <Route path="/invite" element={<InvitePage />} />
+        <Route path="/ranking" element={<RankingPage />} />
+        <Route path="/elements" element={<ElementsPage />} />
+      </Routes>
+    </DndProvider>
   );
 }
 

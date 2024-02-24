@@ -36,7 +36,7 @@ const useUser = () => {
     };
 
     fetchUserData();
-  });
+  }, [setUser]); // Specify dependencies here
 
   return { user, isLoading };
 };

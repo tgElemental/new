@@ -1,4 +1,4 @@
-import { Box, Indicator, SimpleGrid } from "@mantine/core";
+import { Box, Indicator, LoadingOverlay, SimpleGrid } from "@mantine/core";
 import { useDrag, useDrop } from "react-dnd";
 import { DraggableBlockquote } from "../components/DraggableBlockquote";
 
@@ -6,6 +6,7 @@ import data from "@emoji-mart/data";
 import { init } from "emoji-mart";
 import { notifications } from "@mantine/notifications";
 import useUser from "../hooks/useUser";
+import { useState } from "react";
 // import useUser from "../hooks/useUser";
 
 init({ data });
@@ -20,6 +21,8 @@ declare global {
 }
 
 const BoxWithDropTarget = () => {
+  // const visible = false;
+  const [visible, setVisible] = useState(false);
   const [, drop] = useDrop(() => ({
     accept: "Blockquote", // Accepts only Blockquote components
     drop: (item, monitor) => {
@@ -30,27 +33,48 @@ const BoxWithDropTarget = () => {
       notifications.show({
         title: "بازی",
         message: "یه  دونه کارت عنصر بازی کردی، بزار ببینیم چی میشه !",
+        loading: true,
       });
+      setVisible(true);
+      setTimeout(() => {
+        setVisible(false);
+        notifications.show({
+          title: "بازی",
+          message: "مثلا  یه اتفاقی افتاد",
+          color: "red",
+        });
+      }, 3000);
     },
   }));
 
   return (
-    <Box
-      ref={drop}
-      m={"xl"}
-      p={"lg"}
-      style={{
-        height: "200px",
-        border: "2px dashed #ccc",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      نوبت شماست!
-      <br />
-      عنصر خود را انتخاب کنید و بازی کنید
-    </Box>
+    <>
+      <Box pos="relative">
+        <LoadingOverlay
+          visible={visible}
+          zIndex={1000}
+          overlayProps={{ radius: "sm", blur: 2 }}
+          loaderProps={{ color: "pink", type: "bars" }}
+        />
+
+        <Box
+          ref={drop}
+          m={"xl"}
+          p={"lg"}
+          style={{
+            height: "200px",
+            border: "2px dashed #ccc",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          نوبت شماست!
+          <br />
+          عنصر خود را انتخاب کنید و بازی کنید
+        </Box>
+      </Box>
+    </>
   );
 };
 
@@ -79,7 +103,7 @@ const GamePage = () => {
             color="blue"
             size="lg"
             radius="md"
-            label={user.water}
+            label={isLoading ? "" : user.water}
             position="middle-start"
             withBorder
             processing={isLoading}
@@ -92,7 +116,7 @@ const GamePage = () => {
             color="teal"
             size="lg"
             radius="md"
-            label={user.wind}
+            label={isLoading ? "" : user.wind}
             position="middle-start"
             withBorder
             processing={isLoading}
@@ -105,7 +129,7 @@ const GamePage = () => {
             color="brown"
             size="lg"
             radius="md"
-            label={user.earth}
+            label={isLoading ? "" : user.earth}
             position="middle-start"
             withBorder
             processing={isLoading}
@@ -118,7 +142,7 @@ const GamePage = () => {
             color="orange"
             size="lg"
             radius="md"
-            label={user.fire}
+            label={isLoading ? "" : user.fire}
             position="middle-start"
             withBorder
             processing={isLoading}

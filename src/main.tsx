@@ -102,7 +102,7 @@ const Wrapper = () => {
             >
               <Nav />
             </AppShell.Header>
-            <AppShell.Main pt="80" pr={"xs"} pl={"xs"} pb="80" mb="80">
+            <AppShell.Main pt="40" pr={"xs"} pl={"xs"} pb="60" mb="60">
               <App />
             </AppShell.Main>
             <AppShell.Footer>

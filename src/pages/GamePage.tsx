@@ -1,4 +1,4 @@
-import { Box, Group } from "@mantine/core";
+import { Box, SimpleGrid } from "@mantine/core";
 import { useDrag, useDrop } from "react-dnd";
 import { DraggableBlockquote } from "../components/DraggableBlockquote";
 
@@ -71,7 +71,7 @@ const GamePage = () => {
       <h1>بازی</h1>
       <BoxWithDropTarget />
       {/* <DndProvider backend={HTML5Backend}> */}
-      <Group justify="center" gap="xl" grow>
+      <SimpleGrid cols={2}>
         <DraggableBlockquote id="water" icon={wateremoji}>
           آب
         </DraggableBlockquote>
@@ -84,7 +84,7 @@ const GamePage = () => {
         <DraggableBlockquote id="fire" icon={fireemoji}>
           آتش
         </DraggableBlockquote>
-      </Group>
+      </SimpleGrid>
       {/* </DndProvider> */}
     </>
   );

@@ -81,7 +81,7 @@ const ElementsPage = () => {
               color="cyan"
               size="lg"
               radius="sm"
-              label={user.wind}
+              label={isLoading ? "" : user.wind}
               position="middle-start"
               withBorder
               processing={isLoading}
@@ -102,7 +102,7 @@ const ElementsPage = () => {
               color="brown"
               size="lg"
               radius="sm"
-              label={user.earth}
+              label={isLoading ? "" : user.earth}
               position="middle-start"
               withBorder
               processing={isLoading}
@@ -123,7 +123,7 @@ const ElementsPage = () => {
               color="blue"
               size="lg"
               radius="sm"
-              label={user.water}
+              label={isLoading ? "" : user.water}
               position="middle-start"
               withBorder
               processing={isLoading}
@@ -144,7 +144,7 @@ const ElementsPage = () => {
               color="orange"
               size="lg"
               radius="sm"
-              label={user.fire}
+              label={isLoading ? "" : user.fire}
               position="middle-start"
               withBorder
               processing={isLoading}

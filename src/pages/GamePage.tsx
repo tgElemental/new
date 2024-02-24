@@ -22,6 +22,13 @@ declare global {
 
 const BoxWithDropTarget = () => {
   // const visible = false;
+
+  const elementNames = {
+    water: "آب",
+    wind: "باد",
+    soil: "خاک",
+    fire: "آتش",
+  };
   const [visible, setVisible] = useState(false);
   const [, drop] = useDrop(() => ({
     accept: "Blockquote", // Accepts only Blockquote components
@@ -30,16 +37,21 @@ const BoxWithDropTarget = () => {
       console.log("Blockquote dropped");
       console.log(item);
       console.log(monitor);
+
+      //@ts-ignore
+      const elementName = elementNames[item.id];
+      const message = `یه   دونه   کارت   عنصر  ${elementName}  بازی   کردی،   بزار   ببینیم   چی   میشه !`;
+
       notifications.show({
-        title: "بازی",
-        message: "یه  دونه کارت عنصر بازی کردی، بزار ببینیم چی میشه !",
+        title: elementName,
+        message: message,
         loading: true,
       });
       setVisible(true);
       setTimeout(() => {
         setVisible(false);
         notifications.show({
-          title: "بازی",
+          title: "نتیجه",
           message: "مثلا  یه اتفاقی افتاد",
           color: "red",
         });

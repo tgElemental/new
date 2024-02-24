@@ -1,8 +1,7 @@
 import HomePage from "./pages/HomePage";
 import { Route, Routes } from "react-router-dom";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
-import { TouchBackend } from "react-dnd-touch-backend";
+import { DndProvider } from "react-dnd-multi-backend";
+import { HTML5toTouch } from "rdndmb-html5-to-touch";
 import ProfilePage from "./pages/ProfilePage";
 import GamePage from "./pages/GamePage";
 import HelpPage from "./pages/HelpPage";
@@ -10,7 +9,7 @@ import InvitePage from "./pages/InvitePage";
 import RankingPage from "./pages/RankingPage";
 import ElementsPage from "./pages/ElementsPage";
 import WebApp from "@twa-dev/sdk";
-import { useOs } from "@mantine/hooks";
+
 function App() {
   WebApp.ready();
   WebApp.expand();
@@ -18,12 +17,9 @@ function App() {
   WebApp.setHeaderColor("#0e87cc");
   WebApp.enableClosingConfirmation;
   WebApp.BackButton.show();
-  const os = useOs();
-  const isMobile = os === "ios" || os === "android";
-  const backend = isMobile ? TouchBackend : HTML5Backend;
 
   return (
-    <DndProvider backend={backend}>
+    <DndProvider options={HTML5toTouch}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/profile" element={<ProfilePage />} />

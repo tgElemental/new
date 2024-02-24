@@ -1,10 +1,11 @@
-import { Box, SimpleGrid } from "@mantine/core";
+import { Box, Indicator, SimpleGrid } from "@mantine/core";
 import { useDrag, useDrop } from "react-dnd";
 import { DraggableBlockquote } from "../components/DraggableBlockquote";
 
 import data from "@emoji-mart/data";
 import { init } from "emoji-mart";
 import { notifications } from "@mantine/notifications";
+import useUser from "../hooks/useUser";
 // import useUser from "../hooks/useUser";
 
 init({ data });
@@ -58,6 +59,8 @@ const GamePage = () => {
   const soilemoji = <em-emoji id="large_brown_circle" Size="2em"></em-emoji>;
   const fireemoji = <em-emoji id="fire" Size="2em"></em-emoji>;
   const wateremoji = <em-emoji id="droplet" Size="2em"></em-emoji>;
+  // const user = useUser();
+  const { user, isLoading } = useUser();
   const [{}] = useDrag(() => ({
     // const [{ isDragging }, drag] = useDrag(() => ({
     type: "Blockquote", // The type of the draggable item
@@ -70,22 +73,60 @@ const GamePage = () => {
     <>
       <h1>بازی</h1>
       <BoxWithDropTarget />
-      {/* <DndProvider backend={HTML5Backend}> */}
       <SimpleGrid cols={2}>
         <DraggableBlockquote id="water" icon={wateremoji}>
-          آب
+          <Indicator
+            color="blue"
+            size="lg"
+            radius="md"
+            label={user.water}
+            position="middle-start"
+            withBorder
+            processing={isLoading}
+          >
+            آب
+          </Indicator>
         </DraggableBlockquote>
         <DraggableBlockquote id="wind" icon={windemoji}>
-          باد
+          <Indicator
+            color="teal"
+            size="lg"
+            radius="md"
+            label={user.wind}
+            position="middle-start"
+            withBorder
+            processing={isLoading}
+          >
+            باد
+          </Indicator>
         </DraggableBlockquote>
         <DraggableBlockquote id="soil" icon={soilemoji}>
-          خاک
+          <Indicator
+            color="brown"
+            size="lg"
+            radius="md"
+            label={user.earth}
+            position="middle-start"
+            withBorder
+            processing={isLoading}
+          >
+            خاک
+          </Indicator>
         </DraggableBlockquote>
         <DraggableBlockquote id="fire" icon={fireemoji}>
-          آتش
+          <Indicator
+            color="orange"
+            size="lg"
+            radius="md"
+            label={user.fire}
+            position="middle-start"
+            withBorder
+            processing={isLoading}
+          >
+            آتش
+          </Indicator>
         </DraggableBlockquote>
       </SimpleGrid>
-      {/* </DndProvider> */}
     </>
   );
 };

@@ -15,7 +15,8 @@ declare global {
 }
 
 const ElementsPage = () => {
-  const user = useUser();
+  // const user = useUser();
+  const { user, isLoading } = useUser();
   const treeemoji = <em-emoji id="deciduous_tree" Size="2em"></em-emoji>;
   const lightemoji = <em-emoji id="sunny" Size="2em"></em-emoji>;
   const windemoji = <em-emoji id="wind_blowing_face" Size="2em"></em-emoji>;
@@ -40,7 +41,7 @@ const ElementsPage = () => {
             label={user.tree}
             position="middle-start"
             withBorder
-            processing
+            processing={isLoading}
           >
             درخت از برخورد خاک و آب برای شما ایجاد می‌شود
           </Indicator>
@@ -61,7 +62,7 @@ const ElementsPage = () => {
             label={user.light}
             position="middle-start"
             withBorder
-            processing
+            processing={isLoading}
           >
             نور از برخورد باد و آتش برای شما ایجاد می‌شود
           </Indicator>
@@ -83,7 +84,7 @@ const ElementsPage = () => {
               label={user.wind}
               position="middle-start"
               withBorder
-              processing
+              processing={isLoading}
             >
               باد
             </Indicator>
@@ -104,7 +105,7 @@ const ElementsPage = () => {
               label={user.earth}
               position="middle-start"
               withBorder
-              processing
+              processing={isLoading}
             >
               خاک
             </Indicator>
@@ -125,7 +126,7 @@ const ElementsPage = () => {
               label={user.water}
               position="middle-start"
               withBorder
-              processing
+              processing={isLoading}
             >
               آب
             </Indicator>
@@ -146,7 +147,7 @@ const ElementsPage = () => {
               label={user.fire}
               position="middle-start"
               withBorder
-              processing
+              processing={isLoading}
             >
               آتش
             </Indicator>

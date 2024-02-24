@@ -1,5 +1,5 @@
 // hooks/useUser.ts
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSetState } from "@mantine/hooks";
 import WebApp from "@twa-dev/sdk";
 const userdata = WebApp.initDataUnsafe;
@@ -7,7 +7,7 @@ const userdata = WebApp.initDataUnsafe;
 const useUser = () => {
   const [user, setUser] = useSetState({
     userid: 0,
-    name: "",
+    name: "َکاربر",
     fire: 0,
     wind: 0,
     earth: 0,
@@ -16,6 +16,7 @@ const useUser = () => {
     light: 0,
     invited_count: 0,
   });
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -27,15 +28,17 @@ const useUser = () => {
         const data = await response.json();
         const userData = data[0];
         setUser(userData);
+        setIsLoading(false); // Set loading to false after data is fetched
       } catch (error) {
         console.error("Failed to fetch user data:", error);
+        setIsLoading(false); // Also set loading to false in case of error
       }
     };
 
     fetchUserData();
   });
 
-  return user;
+  return { user, isLoading };
 };
 
 export default useUser;

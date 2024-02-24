@@ -83,7 +83,8 @@ const theme = createTheme({
 
 const Wrapper = () => {
   const user = useUser();
-  const allelements = user.earth + user.fire + user.water + user.wind;
+  const allelements =
+    user.user.earth + user.user.fire + user.user.water + user.user.wind;
 
   return (
     <DirectionProvider initialDirection="rtl">

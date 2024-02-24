@@ -1,12 +1,12 @@
 import { Box, Indicator, LoadingOverlay, SimpleGrid } from "@mantine/core";
 import { useDrag, useDrop } from "react-dnd";
 import { DraggableBlockquote } from "../components/DraggableBlockquote";
-
 import data from "@emoji-mart/data";
 import { init } from "emoji-mart";
 import { notifications } from "@mantine/notifications";
 import useUser from "../hooks/useUser";
 import { useState } from "react";
+import axios from "axios";
 // import useUser from "../hooks/useUser";
 
 init({ data });
@@ -20,43 +20,67 @@ declare global {
   }
 }
 
-const BoxWithDropTarget = () => {
-  // const visible = false;
+const playGame = async (element: string, uid: number) => {
+  try {
+    const response = await axios.get(
+      `https://api.rahomaskan.com/api/game?element=${element}&uid=${uid}`,
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error playing game:", error);
+    throw error;
+  }
+};
 
+const BoxWithDropTarget = () => {
   const elementNames = {
     water: "آب",
     wind: "باد",
     soil: "خاک",
     fire: "آتش",
   };
+
+  const initialUserState = useUser();
+  const [user, setUser] = useState(initialUserState); // Assuming you have an initial state for the user
   const [visible, setVisible] = useState(false);
-  const [, drop] = useDrop(() => ({
-    accept: "Blockquote", // Accepts only Blockquote components
-    drop: (item, monitor) => {
-      // Handle the drop logic here
-      console.log("Blockquote dropped");
-      console.log(item);
+  //@ts-ignore
+  const handleDrop = async (item: DragItem, monitor) => {
+    setVisible(true);
+    console.log(monitor);
+    //@ts-ignore
+    const elementName = elementNames[item.id];
+    const message = `یه   دونه   کارت   عنصر  ${elementName}  بازی   کردی،   بزار   ببینیم   چی   میشه !`;
+    notifications.show({
+      title: elementName,
+      message: message,
+    });
+    try {
       console.log(monitor);
+      const result = await playGame(item.id, user.user.userid);
 
-      //@ts-ignore
-      const elementName = elementNames[item.id];
-      const message = `یه   دونه   کارت   عنصر  ${elementName}  بازی   کردی،   بزار   ببینیم   چی   میشه !`;
-
+      // Update the user's data based on the result
+      setUser({ ...user, [item.id]: result.remain });
+      // Show a notification
       notifications.show({
         title: elementName,
-        message: message,
-        loading: true,
+        message: `${result.remain} | ${result.user} | ${result.status} | ${result.element}`,
+        color: result.status === 1 ? "green" : "red",
       });
-      setVisible(true);
-      setTimeout(() => {
-        setVisible(false);
-        notifications.show({
-          title: "نتیجه",
-          message: "مثلا  یه اتفاقی افتاد",
-          color: "red",
-        });
-      }, 3000);
-    },
+    } catch (error) {
+      // Handle error
+      notifications.show({
+        title: "Error",
+        message: "Failed to play game",
+        color: "red",
+      });
+    } finally {
+      setVisible(false);
+    }
+  };
+
+  const [, drop] = useDrop(() => ({
+    accept: "Blockquote",
+    drop: handleDrop,
   }));
 
   return (

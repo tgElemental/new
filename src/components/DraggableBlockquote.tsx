@@ -28,7 +28,7 @@ export const DraggableBlockquote: React.FC<DraggableBlockquoteProps> = ({
       icon={icon}
       iconSize={60}
       mt="xs"
-      w={"20%"}
+      w={"100%"}
     >
       {children}
     </Blockquote>

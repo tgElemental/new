@@ -20,15 +20,19 @@ export const DraggableBlockquote: React.FC<DraggableBlockquoteProps> = ({
       isDragging: monitor.isDragging(),
     }),
   }));
-
+  const clicking = () => {
+    console.log("element clicked");
+  };
   return (
     <Blockquote
+      onClick={clicking}
+      onTouchEndCapture={clicking}
       ref={drag}
       style={{ opacity: isDragging ? 0.5 : 1 }}
       icon={icon}
       iconSize={60}
       m="xs"
-      w={"75%"}
+      w={"95%"}
     >
       {children}
     </Blockquote>

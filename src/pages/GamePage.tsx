@@ -131,7 +131,6 @@ const GamePage = () => {
   }));
   return (
     <>
-      <h1>بازی</h1>
       <BoxWithDropTarget />
       <SimpleGrid cols={2}>
         <DraggableBlockquote id="water" icon={wateremoji}>

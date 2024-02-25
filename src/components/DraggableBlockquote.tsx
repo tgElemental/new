@@ -6,12 +6,14 @@ interface DraggableBlockquoteProps {
   id: string; // Assuming 'id' is a string, adjust the type as necessary
   icon: ReactNode; // Assuming 'icon' is a ReactNode, adjust the type as necessary
   children: ReactNode; // Assuming 'children' is a ReactNode, adjust the type as necessary
+  onClick?: () => void;
 }
 
 export const DraggableBlockquote: React.FC<DraggableBlockquoteProps> = ({
   id,
   icon,
   children,
+  onClick,
 }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "Blockquote",
@@ -20,13 +22,11 @@ export const DraggableBlockquote: React.FC<DraggableBlockquoteProps> = ({
       isDragging: monitor.isDragging(),
     }),
   }));
-  const clicking = () => {
-    console.log("element clicked");
-  };
+
   return (
     <Blockquote
-      onClick={clicking}
-      onTouchEndCapture={clicking}
+      onClick={onClick}
+      onTouchEndCapture={onClick}
       ref={drag}
       style={{ opacity: isDragging ? 0.5 : 1 }}
       icon={icon}

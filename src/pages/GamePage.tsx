@@ -45,8 +45,52 @@ const BoxWithDropTarget = () => {
   const [visible, setVisible] = useState(false);
   //@ts-ignore
   const handleDrop = async (item: DragItem, monitor) => {
+    // setVisible(true);
+    // console.log(monitor);
+    // //@ts-ignore
+    // const elementName = elementNames[item.id];
+    // const message = `یه   دونه   کارت   عنصر  ${elementName}  بازی   کردی،   بزار   ببینیم   چی   میشه !`;
+    // notifications.show({
+    //   title: elementName,
+    //   message: message,
+    // });
+    // try {
+    //   console.log(monitor);
+    //   const result = await playGame(item.id, user.user.userid);
+
+    //   // Update the user's data based on the result
+    //   setUser({ ...user, [item.id]: result.remain });
+    //   // Show a notification
+    //   notifications.show({
+    //     title: elementName,
+    //     message: `${result.remain} | ${result.user} | ${result.status} | ${result.element}`,
+    //     color: result.status === 1 ? "green" : "red",
+    //   });
+    // } catch (error) {
+    //   // Handle error
+    //   notifications.show({
+    //     title: "Error",
+    //     message: "Failed to play game",
+    //     color: "red",
+    //   });
+    // } finally {
+    //   setVisible(false);
+    // }
+    await handleAction(item);
+  };
+
+  const [, drop] = useDrop(() => ({
+    accept: "Blockquote",
+    drop: handleDrop,
+  }));
+
+  // Extracted logic into a separate function
+  //@ts-ignore
+  const handleAction = async (item: DragItem) => {
+    // Your logic here, similar to what you have in handleDrop
+    // For example:
+    console.log("Action performed with item:", item);
     setVisible(true);
-    console.log(monitor);
     //@ts-ignore
     const elementName = elementNames[item.id];
     const message = `یه   دونه   کارت   عنصر  ${elementName}  بازی   کردی،   بزار   ببینیم   چی   میشه !`;
@@ -55,7 +99,6 @@ const BoxWithDropTarget = () => {
       message: message,
     });
     try {
-      console.log(monitor);
       const result = await playGame(item.id, user.user.userid);
 
       // Update the user's data based on the result
@@ -76,12 +119,23 @@ const BoxWithDropTarget = () => {
     } finally {
       setVisible(false);
     }
+    // Add your existing logic here
   };
 
-  const [, drop] = useDrop(() => ({
-    accept: "Blockquote",
-    drop: handleDrop,
-  }));
+  // // Modify handleDrop to use handleAction
+  // const handleDrop = async (item: DragItem, monitor) => {
+  //   // Your existing logic here
+  //   await handleAction(item);
+  // };
+
+  // Modify clicking to use handleAction
+  //@ts-ignore
+  const clicking = (itemid) => {
+    // Assuming you have access to the item you want to pass to handleAction
+    // For example, if you want to pass a hardcoded item:
+    const item = { id: itemid }; // Adjust this based on your actual item
+    handleAction(item);
+  };
 
   return (
     <>
@@ -133,6 +187,7 @@ const GamePage = () => {
     <>
       <BoxWithDropTarget />
       <SimpleGrid cols={2}>
+        {/* <DraggableBlockquote id="water" icon={wateremoji} onClck={clicking("water")}> */}
         <DraggableBlockquote id="water" icon={wateremoji}>
           <Indicator
             color="blue"

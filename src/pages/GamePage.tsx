@@ -106,6 +106,18 @@ const GamePage = () => {
     };
   }
 
+  const { refresh } = useUser();
+  const refreshUserData = async () => {
+    // Assuming useUser has a method to refresh data
+    await refresh();
+  };
+
+  const handleModalClose = () => {
+    setModalOpened(false);
+    setVisible(false);
+    refreshUserData(); // Refresh user data after modal closes
+  };
+
   return (
     <>
       <SimpleGrid cols={2}>
@@ -209,10 +221,7 @@ const GamePage = () => {
       <Modal.Root
         centered
         opened={modalOpened}
-        onClose={() => {
-          setModalOpened(false);
-          setVisible(false);
-        }}
+        onClose={handleModalClose}
         transitionProps={{
           transition: "slide-down",
           duration: 300,

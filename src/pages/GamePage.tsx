@@ -1,5 +1,4 @@
 import {
-  Card,
   Center,
   Indicator,
   LoadingOverlay,
@@ -134,21 +133,6 @@ const GamePage = () => {
           >
             آب
           </Indicator>
-          <hr />
-          <SimpleGrid cols={2}>
-            <Card padding="xs" shadow="xs" withBorder>
-              قویتر از
-            </Card>
-            <Card padding="xs" shadow="xs" withBorder>
-              ضعیفتر از
-            </Card>
-            <Card padding="xs" shadow="xs" withBorder>
-              برابر با
-            </Card>
-            <Card padding="xs" shadow="xs" withBorder>
-              تولید کننده‌ی
-            </Card>
-          </SimpleGrid>
         </DraggableBlockquote>
         <DraggableBlockquote
           id="wind"
@@ -173,21 +157,6 @@ const GamePage = () => {
           >
             باد
           </Indicator>
-          <hr />
-          <SimpleGrid cols={2}>
-            <Card padding="xs" shadow="xs" withBorder>
-              قویتر از
-            </Card>
-            <Card padding="xs" shadow="xs" withBorder>
-              ضعیفتر از
-            </Card>
-            <Card padding="xs" shadow="xs" withBorder>
-              برابر با
-            </Card>
-            <Card padding="xs" shadow="xs" withBorder>
-              تولید کننده‌ی
-            </Card>
-          </SimpleGrid>
         </DraggableBlockquote>
         <DraggableBlockquote
           id="soil"
@@ -212,21 +181,6 @@ const GamePage = () => {
           >
             خاک
           </Indicator>
-          <hr />
-          <SimpleGrid cols={2}>
-            <Card padding="xs" shadow="xs" withBorder>
-              قویتر از
-            </Card>
-            <Card padding="xs" shadow="xs" withBorder>
-              ضعیفتر از
-            </Card>
-            <Card padding="xs" shadow="xs" withBorder>
-              برابر با
-            </Card>
-            <Card padding="xs" shadow="xs" withBorder>
-              تولید کننده‌ی
-            </Card>
-          </SimpleGrid>
         </DraggableBlockquote>
         <DraggableBlockquote
           id="fire"
@@ -251,21 +205,6 @@ const GamePage = () => {
           >
             آتش
           </Indicator>
-          <hr />
-          <SimpleGrid cols={2}>
-            <Card padding="xs" shadow="xs" withBorder>
-              قویتر از
-            </Card>
-            <Card padding="xs" shadow="xs" withBorder>
-              ضعیفتر از
-            </Card>
-            <Card padding="xs" shadow="xs" withBorder>
-              برابر با
-            </Card>
-            <Card padding="xs" shadow="xs" withBorder>
-              تولید کننده‌ی
-            </Card>
-          </SimpleGrid>
         </DraggableBlockquote>
       </SimpleGrid>
       <Modal.Root

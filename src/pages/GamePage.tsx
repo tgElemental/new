@@ -12,6 +12,8 @@ import { notifications } from "@mantine/notifications";
 import useUser from "../hooks/useUser";
 import { useState } from "react";
 import axios from "axios";
+import GameMessage from "../components/GameMessage"; // Adjust the import path as necessary
+
 init({ data });
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -47,7 +49,13 @@ const GamePage = () => {
   const { user, isLoading } = useUser();
   const [visible, setVisible] = useState(false);
   const [modalOpened, setModalOpened] = useState(false); // State to control modal visibility
-  const [modalMessage, setModalMessage] = useState("");
+  // const [modalMessage, setModalMessage] = useState("");
+  const [elementName, setElementName] = useState("");
+  const [botelementName, setBotElementName] = useState("");
+
+  const [score, setScore] = useState(0);
+  const [extra, setExtra] = useState("");
+  const [remain, setRemain] = useState(0);
 
   function clicking(element: string): () => void {
     return async () => {
@@ -73,31 +81,22 @@ const GamePage = () => {
         const response = await axios.get(
           `https://api.rahomaskan.com/api/game?element=${element}&uid=${user.userid}`,
         );
-        // Handle the response here
-        console.log(response.data);
-        // notifications.show({
-        //   title: "بازی",
-        //   message:
-        //     response.data.element +
-        //     " | " +
-        //     response.data.remain +
-        //     " | " +
-        //     response.data.status +
-        //     " | " +
-        //     response.data.user,
-        // });
-        const modalmessage =
-          ` در مقابل  ${elementName} تو، روبات یک ` +
-          elementNames[response.data.botelement] +
-          ` بازی کرد` +
-          response.data.score +
-          "امتیاز برات ثبت شد " +
-          "یه دونه " +
-          elementNames[response.data.extra] +
-          "جدید هم گرفتی " +
-          response.data.remain +
-          " تا دیگه هم از این عنصر داری ";
-        setModalMessage(modalmessage); // Set the message to display in the modal
+
+        // const modalmessage =
+        //   `در  مقابل <strong>${elementName}</strong>  تو،  روبات  یک <strong>${elementNames[response.data.botelement]}</strong>  بازی  کرد<br />` +
+        //   `${response.data.score}  امتیاز  برات  ثبت  شد ` +
+        //   (response.data.extra
+        //     ? `<strong>یه  دونه ${elementNames[response.data.extra]}  جدید  هم  گرفتی</strong> `
+        //     : "هیچ  عنصر  اضافی  دریافت  نشد") +
+        //   `<br />${response.data.remain}  تا  دیگه  هم  از  این  عنصر  داری`;
+
+        setElementName(elementNames[element]);
+
+        // setModalMessage(modalmessage);
+        setBotElementName(elementNames[response.data.botelement]);
+        setScore(response.data.score);
+        setExtra(response.data.extra ? elementNames[response.data.extra] : "");
+        setRemain(response.data.remain);
         notifications.clean(); // close notifications
         setModalOpened(true); // Open the modal
       } catch (error) {
@@ -229,7 +228,16 @@ const GamePage = () => {
             </Modal.Title>
             <Modal.CloseButton />
           </Modal.Header>
-          <Modal.Body>{modalMessage}</Modal.Body>
+          {/* <Modal.Body>{modalMessage}</Modal.Body> */}
+          <Modal.Body>
+            <GameMessage
+              elementName={elementName}
+              botElementName={botelementName}
+              score={score}
+              extraElementName={extra}
+              remain={remain}
+            />
+          </Modal.Body>
         </Modal.Content>
       </Modal.Root>
     </>

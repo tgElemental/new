@@ -75,17 +75,17 @@ const GamePage = () => {
         );
         // Handle the response here
         console.log(response.data);
-        notifications.show({
-          title: "بازی",
-          message:
-            response.data.element +
-            " | " +
-            response.data.remain +
-            " | " +
-            response.data.status +
-            " | " +
-            response.data.user,
-        });
+        // notifications.show({
+        //   title: "بازی",
+        //   message:
+        //     response.data.element +
+        //     " | " +
+        //     response.data.remain +
+        //     " | " +
+        //     response.data.status +
+        //     " | " +
+        //     response.data.user,
+        // });
         const modalmessage =
           ` در مقابل  ${elementName} تو، روبات یک ` +
           elementNames[response.data.botelement] +

@@ -15,7 +15,6 @@ import {
   rem,
 } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
-import { NavigationProgress } from "@mantine/nprogress";
 import { clarity } from "react-microsoft-clarity";
 import Nav from "./components/Nav.tsx";
 import { Link, MemoryRouter as Router } from "react-router-dom";
@@ -89,7 +88,6 @@ const Wrapper = () => {
   return (
     <DirectionProvider initialDirection="rtl">
       <MantineProvider defaultColorScheme="light" theme={theme}>
-        <NavigationProgress />
         <Notifications />
         <Router>
           <AppShell header={{ height: 40 }} footer={{ height: 60 }}>

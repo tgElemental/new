@@ -26,8 +26,6 @@ export default defineConfig({
             "@mantine/hooks",
             "@mantine/modals",
             "@mantine/notifications",
-            "@mantine/nprogress",
-            "@mantine/spotlight",
           ],
         },
       },

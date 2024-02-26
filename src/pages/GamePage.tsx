@@ -136,16 +136,16 @@ const GamePage = () => {
           </Indicator>
           <hr />
           <SimpleGrid cols={2}>
-            <Card shadow="xs" withBorder>
+            <Card padding="xs" shadow="xs" withBorder>
               قویتر از
             </Card>
-            <Card shadow="xs" withBorder>
+            <Card padding="xs" shadow="xs" withBorder>
               ضعیفتر از
             </Card>
-            <Card shadow="xs" withBorder>
+            <Card padding="xs" shadow="xs" withBorder>
               برابر با
             </Card>
-            <Card shadow="xs" withBorder>
+            <Card padding="xs" shadow="xs" withBorder>
               تولید کننده‌ی
             </Card>
           </SimpleGrid>
@@ -175,16 +175,16 @@ const GamePage = () => {
           </Indicator>
           <hr />
           <SimpleGrid cols={2}>
-            <Card shadow="xs" withBorder>
+            <Card padding="xs" shadow="xs" withBorder>
               قویتر از
             </Card>
-            <Card shadow="xs" withBorder>
+            <Card padding="xs" shadow="xs" withBorder>
               ضعیفتر از
             </Card>
-            <Card shadow="xs" withBorder>
+            <Card padding="xs" shadow="xs" withBorder>
               برابر با
             </Card>
-            <Card shadow="xs" withBorder>
+            <Card padding="xs" shadow="xs" withBorder>
               تولید کننده‌ی
             </Card>
           </SimpleGrid>
@@ -214,16 +214,16 @@ const GamePage = () => {
           </Indicator>
           <hr />
           <SimpleGrid cols={2}>
-            <Card shadow="xs" withBorder>
+            <Card padding="xs" shadow="xs" withBorder>
               قویتر از
             </Card>
-            <Card shadow="xs" withBorder>
+            <Card padding="xs" shadow="xs" withBorder>
               ضعیفتر از
             </Card>
-            <Card shadow="xs" withBorder>
+            <Card padding="xs" shadow="xs" withBorder>
               برابر با
             </Card>
-            <Card shadow="xs" withBorder>
+            <Card padding="xs" shadow="xs" withBorder>
               تولید کننده‌ی
             </Card>
           </SimpleGrid>
@@ -253,16 +253,16 @@ const GamePage = () => {
           </Indicator>
           <hr />
           <SimpleGrid cols={2}>
-            <Card shadow="xs" withBorder>
+            <Card padding="xs" shadow="xs" withBorder>
               قویتر از
             </Card>
-            <Card shadow="xs" withBorder>
+            <Card padding="xs" shadow="xs" withBorder>
               ضعیفتر از
             </Card>
-            <Card shadow="xs" withBorder>
+            <Card padding="xs" shadow="xs" withBorder>
               برابر با
             </Card>
-            <Card shadow="xs" withBorder>
+            <Card padding="xs" shadow="xs" withBorder>
               تولید کننده‌ی
             </Card>
           </SimpleGrid>

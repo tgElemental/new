@@ -1,5 +1,11 @@
-import { Box, Indicator, LoadingOverlay, SimpleGrid } from "@mantine/core";
-import { useDrag, useDrop } from "react-dnd";
+import {
+  Card,
+  Center,
+  Indicator,
+  LoadingOverlay,
+  Modal,
+  SimpleGrid,
+} from "@mantine/core";
 import { DraggableBlockquote } from "../components/DraggableBlockquote";
 import data from "@emoji-mart/data";
 import { init } from "emoji-mart";
@@ -7,8 +13,6 @@ import { notifications } from "@mantine/notifications";
 import useUser from "../hooks/useUser";
 import { useState } from "react";
 import axios from "axios";
-// import useUser from "../hooks/useUser";
-
 init({ data });
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -20,175 +24,105 @@ declare global {
   }
 }
 
-const playGame = async (element: string, uid: number) => {
-  try {
-    const response = await axios.get(
-      `https://api.rahomaskan.com/api/game?element=${element}&uid=${uid}`,
-    );
-    return response.data;
-  } catch (error) {
-    console.error("Error playing game:", error);
-    throw error;
-  }
-};
-
-const BoxWithDropTarget = () => {
-  const elementNames = {
-    water: "آب",
-    wind: "باد",
-    soil: "خاک",
-    fire: "آتش",
-  };
-
-  const initialUserState = useUser();
-  const [user, setUser] = useState(initialUserState); // Assuming you have an initial state for the user
+const GamePage = () => {
+  const windemoji = (
+    <div style={{ zIndex: 10 }}>
+      <em-emoji id="wind_blowing_face" Size="2em"></em-emoji>
+    </div>
+  );
+  const soilemoji = (
+    <div style={{ zIndex: 10 }}>
+      <em-emoji id="large_brown_circle" Size="2em"></em-emoji>
+    </div>
+  );
+  const fireemoji = (
+    <div style={{ zIndex: 10 }}>
+      <em-emoji id="fire" Size="2em"></em-emoji>
+    </div>
+  );
+  const wateremoji = (
+    <div style={{ zIndex: 10 }}>
+      <em-emoji id="droplet" Size="2em"></em-emoji>
+    </div>
+  );
+  const { user, isLoading } = useUser();
   const [visible, setVisible] = useState(false);
-  //@ts-ignore
-  const handleDrop = async (item: DragItem, monitor) => {
-    // setVisible(true);
-    // console.log(monitor);
-    // //@ts-ignore
-    // const elementName = elementNames[item.id];
-    // const message = `یه   دونه   کارت   عنصر  ${elementName}  بازی   کردی،   بزار   ببینیم   چی   میشه !`;
-    // notifications.show({
-    //   title: elementName,
-    //   message: message,
-    // });
-    // try {
-    //   console.log(monitor);
-    //   const result = await playGame(item.id, user.user.userid);
+  const [modalOpened, setModalOpened] = useState(false); // State to control modal visibility
+  const [modalMessage, setModalMessage] = useState("");
 
-    //   // Update the user's data based on the result
-    //   setUser({ ...user, [item.id]: result.remain });
-    //   // Show a notification
-    //   notifications.show({
-    //     title: elementName,
-    //     message: `${result.remain} | ${result.user} | ${result.status} | ${result.element}`,
-    //     color: result.status === 1 ? "green" : "red",
-    //   });
-    // } catch (error) {
-    //   // Handle error
-    //   notifications.show({
-    //     title: "Error",
-    //     message: "Failed to play game",
-    //     color: "red",
-    //   });
-    // } finally {
-    //   setVisible(false);
-    // }
-    await handleAction(item);
-  };
+  function clicking(element: string): () => void {
+    return async () => {
+      setVisible(true);
+      const elementNames: { [key: string]: string } = {
+        water: "آب",
+        wind: "باد",
+        soil: "خاک",
+        fire: "آتش",
+        tree: "درخت",
+        light: "نور",
+      };
+      const elementName = elementNames[element]; // Use 'element' directly
 
-  const [, drop] = useDrop(() => ({
-    accept: "Blockquote",
-    drop: handleDrop,
-  }));
+      const message = `یه   دونه   کارت   عنصر  ${elementName}  بازی   کردی،   بزار   ببینیم   چی   میشه !`;
 
-  // Extracted logic into a separate function
-  //@ts-ignore
-  const handleAction = async (item: DragItem) => {
-    // Your logic here, similar to what you have in handleDrop
-    // For example:
-    console.log("Action performed with item:", item);
-    setVisible(true);
-    //@ts-ignore
-    const elementName = elementNames[item.id];
-    const message = `یه   دونه   کارت   عنصر  ${elementName}  بازی   کردی،   بزار   ببینیم   چی   میشه !`;
-    notifications.show({
-      title: elementName,
-      message: message,
-    });
-    try {
-      const result = await playGame(item.id, user.user.userid);
-
-      // Update the user's data based on the result
-      setUser({ ...user, [item.id]: result.remain });
-      // Show a notification
       notifications.show({
         title: elementName,
-        message: `${result.remain} | ${result.user} | ${result.status} | ${result.element}`,
-        color: result.status === 1 ? "green" : "red",
+        message: message,
+        loading: true,
       });
-    } catch (error) {
-      // Handle error
-      notifications.show({
-        title: "Error",
-        message: "Failed to play game",
-        color: "red",
-      });
-    } finally {
-      setVisible(false);
-    }
-    // Add your existing logic here
-  };
-
-  // // Modify handleDrop to use handleAction
-  // const handleDrop = async (item: DragItem, monitor) => {
-  //   // Your existing logic here
-  //   await handleAction(item);
-  // };
-
-  // Modify clicking to use handleAction
-  //@ts-ignore
-  const clicking = (itemid) => {
-    // Assuming you have access to the item you want to pass to handleAction
-    // For example, if you want to pass a hardcoded item:
-    const item = { id: itemid }; // Adjust this based on your actual item
-    handleAction(item);
-  };
+      try {
+        const response = await axios.get(
+          `https://api.rahomaskan.com/api/game?element=${element}&uid=${user.userid}`,
+        );
+        // Handle the response here
+        console.log(response.data);
+        notifications.show({
+          title: "بازی",
+          message:
+            response.data.element +
+            " | " +
+            response.data.remain +
+            " | " +
+            response.data.status +
+            " | " +
+            response.data.user,
+        });
+        const modalmessage =
+          ` در مقابل  ${elementName} تو، روبات یک ` +
+          elementNames[response.data.botelement] +
+          ` بازی کرد` +
+          response.data.score +
+          "امتیاز برات ثبت شد " +
+          "یه دونه " +
+          elementNames[response.data.extra] +
+          "جدید هم گرفتی " +
+          response.data.remain +
+          " تا دیگه هم از این عنصر داری ";
+        setModalMessage(modalmessage); // Set the message to display in the modal
+        notifications.clean(); // close notifications
+        setModalOpened(true); // Open the modal
+      } catch (error) {
+        console.error("Error playing game:", error);
+        // Handle the error here
+      }
+    };
+  }
 
   return (
     <>
-      <Box pos="relative">
-        <LoadingOverlay
-          visible={visible}
-          zIndex={1000}
-          overlayProps={{ radius: "sm", blur: 2 }}
-          loaderProps={{ color: "pink", type: "bars" }}
-        />
-
-        <Box
-          ref={drop}
-          m={"xl"}
-          p={"lg"}
-          style={{
-            height: "200px",
-            border: "2px dashed #ccc",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          نوبت شماست!
-          <br />
-          عنصر خود را انتخاب کنید و بازی کنید
-        </Box>
-      </Box>
-    </>
-  );
-};
-
-const GamePage = () => {
-  const windemoji = <em-emoji id="wind_blowing_face" Size="2em"></em-emoji>;
-  const soilemoji = <em-emoji id="large_brown_circle" Size="2em"></em-emoji>;
-  const fireemoji = <em-emoji id="fire" Size="2em"></em-emoji>;
-  const wateremoji = <em-emoji id="droplet" Size="2em"></em-emoji>;
-  // const user = useUser();
-  const { user, isLoading } = useUser();
-  const [{}] = useDrag(() => ({
-    // const [{ isDragging }, drag] = useDrag(() => ({
-    type: "Blockquote", // The type of the draggable item
-    item: { id: "unique-id" }, // An optional object with data about the item
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
-  }));
-  return (
-    <>
-      <BoxWithDropTarget />
       <SimpleGrid cols={2}>
-        {/* <DraggableBlockquote id="water" icon={wateremoji} onClck={clicking("water")}> */}
-        <DraggableBlockquote id="water" icon={wateremoji}>
+        <DraggableBlockquote
+          id="water"
+          icon={wateremoji}
+          onClick={clicking("water")}
+        >
+          <LoadingOverlay
+            visible={visible}
+            zIndex={9}
+            overlayProps={{ radius: "sm", blur: 2 }}
+            loaderProps={{ color: "pink", type: "bars" }}
+            bg={"blue"}
+          />
           <Indicator
             color="blue"
             size="lg"
@@ -200,8 +134,34 @@ const GamePage = () => {
           >
             آب
           </Indicator>
+          <hr />
+          <SimpleGrid cols={2}>
+            <Card shadow="xs" withBorder>
+              قویتر از
+            </Card>
+            <Card shadow="xs" withBorder>
+              ضعیفتر از
+            </Card>
+            <Card shadow="xs" withBorder>
+              برابر با
+            </Card>
+            <Card shadow="xs" withBorder>
+              تولید کننده‌ی
+            </Card>
+          </SimpleGrid>
         </DraggableBlockquote>
-        <DraggableBlockquote id="wind" icon={windemoji}>
+        <DraggableBlockquote
+          id="wind"
+          icon={windemoji}
+          onClick={clicking("wind")}
+        >
+          <LoadingOverlay
+            visible={visible}
+            zIndex={9}
+            overlayProps={{ radius: "sm", blur: 2 }}
+            loaderProps={{ color: "pink", type: "bars" }}
+            bg={"teal"}
+          />
           <Indicator
             color="teal"
             size="lg"
@@ -213,8 +173,34 @@ const GamePage = () => {
           >
             باد
           </Indicator>
+          <hr />
+          <SimpleGrid cols={2}>
+            <Card shadow="xs" withBorder>
+              قویتر از
+            </Card>
+            <Card shadow="xs" withBorder>
+              ضعیفتر از
+            </Card>
+            <Card shadow="xs" withBorder>
+              برابر با
+            </Card>
+            <Card shadow="xs" withBorder>
+              تولید کننده‌ی
+            </Card>
+          </SimpleGrid>
         </DraggableBlockquote>
-        <DraggableBlockquote id="soil" icon={soilemoji}>
+        <DraggableBlockquote
+          id="soil"
+          icon={soilemoji}
+          onClick={clicking("soil")}
+        >
+          <LoadingOverlay
+            visible={visible}
+            zIndex={9}
+            overlayProps={{ radius: "sm", blur: 2 }}
+            loaderProps={{ color: "pink", type: "bars" }}
+            bg={"brown"}
+          />
           <Indicator
             color="brown"
             size="lg"
@@ -226,8 +212,34 @@ const GamePage = () => {
           >
             خاک
           </Indicator>
+          <hr />
+          <SimpleGrid cols={2}>
+            <Card shadow="xs" withBorder>
+              قویتر از
+            </Card>
+            <Card shadow="xs" withBorder>
+              ضعیفتر از
+            </Card>
+            <Card shadow="xs" withBorder>
+              برابر با
+            </Card>
+            <Card shadow="xs" withBorder>
+              تولید کننده‌ی
+            </Card>
+          </SimpleGrid>
         </DraggableBlockquote>
-        <DraggableBlockquote id="fire" icon={fireemoji}>
+        <DraggableBlockquote
+          id="fire"
+          icon={fireemoji}
+          onClick={clicking("fire")}
+        >
+          <LoadingOverlay
+            visible={visible}
+            zIndex={9}
+            overlayProps={{ radius: "sm", blur: 2 }}
+            loaderProps={{ color: "pink", type: "bars" }}
+            bg={"orange"}
+          />
           <Indicator
             color="orange"
             size="lg"
@@ -239,8 +251,48 @@ const GamePage = () => {
           >
             آتش
           </Indicator>
+          <hr />
+          <SimpleGrid cols={2}>
+            <Card shadow="xs" withBorder>
+              قویتر از
+            </Card>
+            <Card shadow="xs" withBorder>
+              ضعیفتر از
+            </Card>
+            <Card shadow="xs" withBorder>
+              برابر با
+            </Card>
+            <Card shadow="xs" withBorder>
+              تولید کننده‌ی
+            </Card>
+          </SimpleGrid>
         </DraggableBlockquote>
       </SimpleGrid>
+      <Modal.Root
+        centered
+        opened={modalOpened}
+        onClose={() => {
+          setModalOpened(false);
+          setVisible(false);
+        }}
+        transitionProps={{
+          transition: "slide-down",
+          duration: 300,
+          timingFunction: "linear",
+        }}
+        size="75%"
+      >
+        <Modal.Overlay />
+        <Modal.Content>
+          <Modal.Header>
+            <Modal.Title style={{ fontWeight: 900, fontSize: 20 }}>
+              <Center>نتیجه این راند</Center>
+            </Modal.Title>
+            <Modal.CloseButton />
+          </Modal.Header>
+          <Modal.Body>{modalMessage}</Modal.Body>
+        </Modal.Content>
+      </Modal.Root>
     </>
   );
 };

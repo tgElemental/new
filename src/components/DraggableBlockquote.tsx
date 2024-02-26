@@ -1,4 +1,3 @@
-import { useDrag } from "react-dnd";
 import { Blockquote } from "@mantine/core";
 import { ReactNode } from "react";
 
@@ -10,25 +9,14 @@ interface DraggableBlockquoteProps {
 }
 
 export const DraggableBlockquote: React.FC<DraggableBlockquoteProps> = ({
-  id,
   icon,
   children,
   onClick,
 }) => {
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: "Blockquote",
-    item: { id },
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
-  }));
-
   return (
     <Blockquote
       onClick={onClick}
       onTouchEndCapture={onClick}
-      ref={drag}
-      style={{ opacity: isDragging ? 0.5 : 1 }}
       icon={icon}
       iconSize={60}
       m="xs"

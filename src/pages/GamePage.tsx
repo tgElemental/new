@@ -70,6 +70,7 @@ const GamePage = () => {
   };
 
   function clicking(element: string): () => void {
+    vibration.notificationOccurred("success");
     const elementNames: { [key: string]: string } = {
       water: "آب",
       wind: "باد",
@@ -101,7 +102,7 @@ const GamePage = () => {
         notifications.clean(); // close notifications
         // Check if status is  1 and trigger vibration
         if (response.data.status === 1) {
-          vibration.notificationOccurred("success");
+          vibration.impactOccurred("heavy");
         }
       } catch (error) {
         console.error("Error playing game:", error);

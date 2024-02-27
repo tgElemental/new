@@ -57,13 +57,13 @@ export const DraggableBlockquote: React.FC<DraggableBlockquoteProps> = ({
       </SimpleGrid>
       <Space h="xl" />
       <Group gap={"xs"} justify="space-between">
-        <ThemeIcon radius="xl" size="xl" color="green">
+        <ThemeIcon radius="xl" color="green">
           <IconSeeding style={{ width: "70%", height: "70%" }} />
         </ThemeIcon>
-        <ThemeIcon radius="xl" size="xl" color="indigo">
+        <ThemeIcon radius="xl" color="indigo">
           <IconShovel style={{ width: "70%", height: "70%" }} />
         </ThemeIcon>
-        <ThemeIcon radius="xl" size="xl" color="violet">
+        <ThemeIcon radius="xl" color="violet">
           <IconShieldChevron style={{ width: "70%", height: "70%" }} />
         </ThemeIcon>
       </Group>

@@ -63,17 +63,20 @@ const GameMessage: React.FC<GameMessageProps> = ({
         <>
           <ConfettiExplosion zIndex={9999999999} />
           <Timeline color="green" active={3} lineWidth={3} bulletSize={40}>
-            <Timeline.Item bullet={renderEmoji(elementName)} title="عنصر  شما">
+            <Timeline.Item
+              bullet={renderEmoji(elementName)}
+              title={elementName}
+            >
               <Text c="dimmed" size="sm">
-                {elementName}
+                عنصر شما
               </Text>
             </Timeline.Item>
             <Timeline.Item
               bullet={renderEmoji(botElementName)}
-              title="عنصر  رقیب"
+              title={botElementName}
             >
               <Text c="dimmed" size="sm">
-                {botElementName}
+                عنصر رقیب
               </Text>
             </Timeline.Item>
             <Timeline.Item
@@ -94,17 +97,21 @@ const GameMessage: React.FC<GameMessageProps> = ({
                 </Text>
               </Timeline.Item>
             ) : null}
+            {score > 0 ? (
+              <Timeline.Item
+                bullet={<em-emoji id="moneybag" Size="2em"></em-emoji>}
+                title="امتیاز"
+                lineVariant="dashed"
+              >
+                <Text c="dimmed" size="sm">
+                  {score}
+                </Text>
+              </Timeline.Item>
+            ) : null}
             <Timeline.Item
-              bullet={<em-emoji id="moneybag" Size="2em"></em-emoji>}
-              title="امتیاز"
-            >
-              <Text c="dimmed" size="sm">
-                {score}
-              </Text>
-            </Timeline.Item>
-            <Timeline.Item
-              bullet={<em-emoji id="package" Size="2em"></em-emoji>}
+              bullet={renderEmoji(elementName)}
               title="باقیمانده"
+              lineVariant="dotted"
             >
               <Text c="dimmed" size="sm">
                 {remain}

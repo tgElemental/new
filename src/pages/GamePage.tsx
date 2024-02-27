@@ -13,8 +13,8 @@ import useUser from "../hooks/useUser";
 import axios from "axios";
 import GameMessage from "../components/GameMessage";
 import { useSetState } from "@mantine/hooks";
-import WebApp from "@twa-dev/sdk";
-const vibration = WebApp.HapticFeedback;
+// import WebApp from "@twa-dev/sdk";
+// const vibration = WebApp.HapticFeedback;
 
 init({ data });
 declare global {
@@ -100,9 +100,9 @@ const GamePage = () => {
         });
         notifications.clean(); // close notifications
         // Check if status is  1 and trigger vibration
-        if (response.data.status === 1) {
-          vibration.notificationOccurred("success");
-        }
+        // if (response.data.status === 1) {
+        //   vibration.notificationOccurred("success");
+        // }
       } catch (error) {
         console.error("Error playing game:", error);
       }

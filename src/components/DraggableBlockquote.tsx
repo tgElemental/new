@@ -1,4 +1,16 @@
-import { Blockquote, Card, SimpleGrid } from "@mantine/core";
+import {
+  Blockquote,
+  Card,
+  Group,
+  SimpleGrid,
+  Space,
+  ThemeIcon,
+} from "@mantine/core";
+import {
+  IconSeeding,
+  IconShieldChevron,
+  IconShovel,
+} from "@tabler/icons-react";
 import { ReactNode } from "react";
 
 interface DraggableBlockquoteProps {
@@ -25,23 +37,36 @@ export const DraggableBlockquote: React.FC<DraggableBlockquoteProps> = ({
       pr={"xs"}
       pt={"xs"}
       w={"95%"}
+      ms={"xs"}
+      radius={0}
     >
+      <Space h="xl" />
       {children}
-      <hr />
+      <Space h="xl" />
       <SimpleGrid cols={2}>
-        <Card padding="xs" shadow="xs" withBorder>
-          قویتر از
-        </Card>
-        <Card padding="xs" shadow="xs" withBorder>
-          ضعیفتر از
-        </Card>
-        <Card padding="xs" shadow="xs" withBorder>
-          برابر با
-        </Card>
-        <Card padding="xs" shadow="xs" withBorder>
-          تولید کننده‌ی
-        </Card>
+        <Card padding="xs" shadow="xs" withBorder radius={0} bg={"blue"}></Card>
+        <Card padding="xs" shadow="xs" withBorder radius={0} bg={"cyan"}></Card>
+        <Card
+          padding="xs"
+          shadow="xs"
+          withBorder
+          radius={0}
+          bg={"indigo"}
+        ></Card>
+        <Card padding="xs" shadow="xs" withBorder radius={0} bg={"pink"}></Card>
       </SimpleGrid>
+      <Space h="xl" />
+      <Group gap={"xs"} justify="space-between">
+        <ThemeIcon radius="xl" size="xl" color="green">
+          <IconSeeding style={{ width: "70%", height: "70%" }} />
+        </ThemeIcon>
+        <ThemeIcon radius="xl" size="xl" color="indigo">
+          <IconShovel style={{ width: "70%", height: "70%" }} />
+        </ThemeIcon>
+        <ThemeIcon radius="xl" size="xl" color="violet">
+          <IconShieldChevron style={{ width: "70%", height: "70%" }} />
+        </ThemeIcon>
+      </Group>
     </Blockquote>
   );
 };

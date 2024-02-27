@@ -135,8 +135,7 @@ const GamePage = () => {
           <LoadingOverlay
             visible={state.visible}
             zIndex={9}
-            overlayProps={{ radius: "sm", blur: 2 }}
-            loaderProps={{ color: "pink", type: "bars" }}
+            loaderProps={{ color: "dark", type: "bars", size: "xs" }}
             bg={"blue"}
           />
           <Indicator
@@ -159,8 +158,7 @@ const GamePage = () => {
           <LoadingOverlay
             visible={state.visible}
             zIndex={9}
-            overlayProps={{ radius: "sm", blur: 2 }}
-            loaderProps={{ color: "pink", type: "bars" }}
+            loaderProps={{ color: "dark", type: "bars", size: "xs" }}
             bg={"teal"}
           />
           <Indicator
@@ -183,8 +181,7 @@ const GamePage = () => {
           <LoadingOverlay
             visible={state.visible}
             zIndex={9}
-            overlayProps={{ radius: "sm", blur: 2 }}
-            loaderProps={{ color: "pink", type: "bars" }}
+            loaderProps={{ color: "dark", type: "bars", size: "xs" }}
             bg={"brown"}
           />
           <Indicator
@@ -207,8 +204,7 @@ const GamePage = () => {
           <LoadingOverlay
             visible={state.visible}
             zIndex={9}
-            overlayProps={{ radius: "sm", blur: 2 }}
-            loaderProps={{ color: "pink", type: "bars" }}
+            loaderProps={{ color: "dark", type: "bars", size: "xs" }}
             bg={"orange"}
           />
           <Indicator

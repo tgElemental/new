@@ -88,11 +88,6 @@ const GamePage = () => {
           `https://api.rahomaskan.com/api/game?element=${element}&uid=${user.userid}`,
         );
 
-        // Check if status is  1 and trigger vibration
-        if (response.data.status === 1) {
-          vibration.impactOccurred("heavy");
-        }
-
         setState({
           elementName: elementNames[element],
           botElementName: elementNames[response.data.botelement],
@@ -104,6 +99,10 @@ const GamePage = () => {
           status: response.data.status,
         });
         notifications.clean(); // close notifications
+        // Check if status is  1 and trigger vibration
+        if (response.data.status === 1) {
+          vibration.notificationOccurred("success");
+        }
       } catch (error) {
         console.error("Error playing game:", error);
       }

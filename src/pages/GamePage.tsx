@@ -13,7 +13,6 @@ import useUser from "../hooks/useUser";
 import axios from "axios";
 import GameMessage from "../components/GameMessage";
 import { useSetState } from "@mantine/hooks";
-import ConfettiExplosion from "react-confetti-explosion";
 
 init({ data });
 declare global {
@@ -57,6 +56,7 @@ const GamePage = () => {
     extra: "",
     remain: 0,
     text: "",
+    status: 1,
   });
 
   const showNotification = (elementName: string, message: string) => {
@@ -98,6 +98,7 @@ const GamePage = () => {
           remain: response.data.remain,
           modalOpened: true,
           text: response.data.text,
+          status: response.data.status,
         });
         notifications.clean(); // close notifications
       } catch (error) {
@@ -229,17 +230,20 @@ const GamePage = () => {
         size="75%"
       >
         <Modal.Overlay />
-        <Modal.Content>
+        <Modal.Content bg={state.status === 0 ? "red" : "white"}>
           <Modal.Header>
-            <Modal.Title style={{ fontWeight: 900, fontSize: 20 }}>
+            <Modal.Title
+              style={{ fontWeight: 900, fontSize: 20 }}
+              bg={state.status === 0 ? "red" : "white"}
+            >
               <Center>نتیجه این راند</Center>
             </Modal.Title>
             <Modal.CloseButton />
           </Modal.Header>
           {/* <Modal.Body>{modalMessage}</Modal.Body> */}
           <Modal.Body>
-            <ConfettiExplosion zIndex={9999999999} />
             <GameMessage
+              status={state.status}
               elementName={state.elementName}
               botElementName={state.botElementName}
               score={state.score}

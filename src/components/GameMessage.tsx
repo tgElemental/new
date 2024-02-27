@@ -1,9 +1,13 @@
 // GameMessage.tsx
-import { Text, Timeline } from "@mantine/core";
-import { IconGitBranch } from "@tabler/icons-react";
+import { Card, Text, Timeline } from "@mantine/core";
 import React from "react";
 import data from "@emoji-mart/data";
 import { init } from "emoji-mart";
+import ConfettiExplosion from "react-confetti-explosion";
+import WebApp from "@twa-dev/sdk";
+
+const vibration = WebApp.HapticFeedback;
+
 init({ data });
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -21,6 +25,7 @@ interface GameMessageProps {
   extraElementName?: string;
   remain: number;
   text: string;
+  status: number;
 }
 interface EmojiMap {
   [key: string]: JSX.Element;
@@ -49,52 +54,73 @@ const GameMessage: React.FC<GameMessageProps> = ({
   extraElementName,
   remain,
   text,
+  status,
 }) => {
+  {
+    status === 0 ? "" : vibration.impactOccurred("heavy");
+  }
   return (
     <>
-      <Timeline color="green" active={3} lineWidth={3} bulletSize={40}>
-        <Timeline.Item bullet={renderEmoji(elementName)} title="عنصر شما">
-          <Text c="dimmed" size="sm">
-            {elementName}
-          </Text>
-        </Timeline.Item>
-        <Timeline.Item bullet={renderEmoji(botElementName)} title="عنصر رقیب">
-          <Text c="dimmed" size="sm">
-            {botElementName}
-          </Text>
-        </Timeline.Item>
-        <Timeline.Item bullet={<IconGitBranch size={12} />} title="نتیجه">
-          <Text c="dimmed" size="sm">
-            {text}
-          </Text>
-        </Timeline.Item>
-        {extraElementName ? (
-          <Timeline.Item bullet={<IconGitBranch size={12} />} title="جایزه">
-            <Text c="dimmed" size="sm">
-              {extraElementName}
-            </Text>
-          </Timeline.Item>
-        ) : (
-          <Timeline.Item
-            bullet={<IconGitBranch size={12} />}
-            title="بدون جایزه"
-          >
-            <Text c="dimmed" size="sm">
-              نور و درختی نگرفتی
-            </Text>
-          </Timeline.Item>
-        )}
-        <Timeline.Item bullet={<IconGitBranch size={12} />} title="امتیاز">
-          <Text c="dimmed" size="sm">
-            {score}
-          </Text>
-        </Timeline.Item>
-        <Timeline.Item bullet={<IconGitBranch size={12} />} title="باقیمانده">
-          <Text c="dimmed" size="sm">
-            {remain}
-          </Text>
-        </Timeline.Item>
-      </Timeline>
+      {status === 0 ? (
+        <Card color="white" shadow="xl" m={"xl"} p={"xl"}>
+          {text}
+        </Card>
+      ) : (
+        <>
+          <ConfettiExplosion zIndex={9999999999} />
+          <Timeline color="green" active={3} lineWidth={3} bulletSize={40}>
+            <Timeline.Item bullet={renderEmoji(elementName)} title="عنصر  شما">
+              <Text c="dimmed" size="sm">
+                {elementName}
+              </Text>
+            </Timeline.Item>
+            <Timeline.Item
+              bullet={renderEmoji(botElementName)}
+              title="عنصر  رقیب"
+            >
+              <Text c="dimmed" size="sm">
+                {botElementName}
+              </Text>
+            </Timeline.Item>
+            <Timeline.Item
+              bullet={<em-emoji id="trophy" Size="2em"></em-emoji>}
+              title="نتیجه"
+            >
+              <Text c="dimmed" size="sm">
+                {text}
+              </Text>
+            </Timeline.Item>
+            {extraElementName ? (
+              <Timeline.Item
+                bullet={<em-emoji id="gift" Size="2em"></em-emoji>}
+                title="جایزه"
+              >
+                <Text c="dimmed" size="sm">
+                  {extraElementName}
+                </Text>
+              </Timeline.Item>
+            ) : (
+              ""
+            )}
+            <Timeline.Item
+              bullet={<em-emoji id="moneybag" Size="2em"></em-emoji>}
+              title="امتیاز"
+            >
+              <Text c="dimmed" size="sm">
+                {score}
+              </Text>
+            </Timeline.Item>
+            <Timeline.Item
+              bullet={<em-emoji id="package" Size="2em"></em-emoji>}
+              title="باقیمانده"
+            >
+              <Text c="dimmed" size="sm">
+                {remain}
+              </Text>
+            </Timeline.Item>
+          </Timeline>
+        </>
+      )}
     </>
   );
 };

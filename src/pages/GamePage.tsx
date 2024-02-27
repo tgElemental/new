@@ -56,6 +56,15 @@ const GamePage = () => {
     extra: "",
     remain: 0,
   });
+
+  const showNotification = (elementName: string, message: string) => {
+    notifications.show({
+      title: elementName,
+      message: message,
+      loading: true,
+    });
+  };
+
   function clicking(element: string): () => void {
     const elementNames: { [key: string]: string } = {
       water: "آب",
@@ -67,13 +76,14 @@ const GamePage = () => {
     };
     const elementName = elementNames[element]; // Use 'element' directly
     const message = `یه   دونه   کارت   عنصر  ${elementName}  بازی   کردی،   بزار   ببینیم   چی   میشه !`;
-    notifications.show({
-      title: elementName,
-      message: message,
-      loading: true,
-    });
+    // notifications.show({
+    //   title: elementName,
+    //   message: message,
+    //   loading: true,
+    // });
     return async () => {
       setState({ visible: true });
+      showNotification(elementName, message);
       try {
         const response = await axios.get(
           `https://api.rahomaskan.com/api/game?element=${element}&uid=${user.userid}`,
@@ -84,6 +94,7 @@ const GamePage = () => {
           score: response.data.score,
           extra: response.data.extra ? elementNames[response.data.extra] : "",
           remain: response.data.remain,
+          modalOpened: true,
         });
         notifications.clean(); // close notifications
       } catch (error) {

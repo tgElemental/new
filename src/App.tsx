@@ -14,7 +14,7 @@ function App() {
   WebApp.setBackgroundColor("#C3B091");
   WebApp.setHeaderColor("#0e87cc");
   WebApp.enableClosingConfirmation;
-  WebApp.BackButton.show();
+  // WebApp.BackButton.show();
 
   return (
     <Routes>

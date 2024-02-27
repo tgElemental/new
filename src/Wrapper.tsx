@@ -128,7 +128,6 @@ export const Wrapper = () => {
                     position="top-start"
                     size={20}
                     withBorder
-                    processing
                     label={allelements}
                   >
                     <UnstyledButton
@@ -146,7 +145,7 @@ export const Wrapper = () => {
                 </Link>
 
                 <Link to={"/game"}>
-                  <Indicator label="به‌زودی" position="top-start" size={16}>
+                  <Indicator label="آزمایشی" position="top-start" size={16}>
                     <UnstyledButton
                       mr={"xs"}
                       ml={"xs"}

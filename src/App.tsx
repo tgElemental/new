@@ -6,14 +6,8 @@ import HelpPage from "./pages/HelpPage";
 import InvitePage from "./pages/InvitePage";
 import RankingPage from "./pages/RankingPage";
 import ElementsPage from "./pages/ElementsPage";
-import WebApp from "@twa-dev/sdk";
 
 function App() {
-  WebApp.ready();
-  WebApp.expand();
-  WebApp.setBackgroundColor("#C3B091");
-  WebApp.setHeaderColor("#0e87cc");
-  WebApp.enableClosingConfirmation;
   // WebApp.BackButton.show();
 
   return (

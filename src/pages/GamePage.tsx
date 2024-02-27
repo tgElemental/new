@@ -13,6 +13,7 @@ import useUser from "../hooks/useUser";
 import axios from "axios";
 import GameMessage from "../components/GameMessage";
 import { useSetState } from "@mantine/hooks";
+import ConfettiExplosion from "react-confetti-explosion";
 
 init({ data });
 declare global {
@@ -215,6 +216,7 @@ const GamePage = () => {
           </Indicator>
         </DraggableBlockquote>
       </SimpleGrid>
+
       <Modal.Root
         centered
         opened={state.modalOpened}
@@ -236,6 +238,7 @@ const GamePage = () => {
           </Modal.Header>
           {/* <Modal.Body>{modalMessage}</Modal.Body> */}
           <Modal.Body>
+            <ConfettiExplosion zIndex={9999999999} />
             <GameMessage
               elementName={state.elementName}
               botElementName={state.botElementName}

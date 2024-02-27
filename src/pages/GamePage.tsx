@@ -13,6 +13,8 @@ import useUser from "../hooks/useUser";
 import axios from "axios";
 import GameMessage from "../components/GameMessage";
 import { useSetState } from "@mantine/hooks";
+import WebApp from "@twa-dev/sdk";
+const vibration = WebApp.HapticFeedback;
 
 init({ data });
 declare global {
@@ -78,11 +80,6 @@ const GamePage = () => {
     };
     const elementName = elementNames[element]; // Use 'element' directly
     const message = `یه   دونه   کارت   عنصر  ${elementName}  بازی   کردی،   بزار   ببینیم   چی   میشه !`;
-    // notifications.show({
-    //   title: elementName,
-    //   message: message,
-    //   loading: true,
-    // });
     return async () => {
       setState({ visible: true });
       showNotification(elementName, message);
@@ -90,6 +87,12 @@ const GamePage = () => {
         const response = await axios.get(
           `https://api.rahomaskan.com/api/game?element=${element}&uid=${user.userid}`,
         );
+
+        // Check if status is  1 and trigger vibration
+        if (response.data.status === 1) {
+          vibration.impactOccurred("heavy");
+        }
+
         setState({
           elementName: elementNames[element],
           botElementName: elementNames[response.data.botelement],

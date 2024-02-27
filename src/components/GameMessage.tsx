@@ -4,9 +4,6 @@ import React from "react";
 import data from "@emoji-mart/data";
 import { init } from "emoji-mart";
 import ConfettiExplosion from "react-confetti-explosion";
-import WebApp from "@twa-dev/sdk";
-
-const vibration = WebApp.HapticFeedback;
 
 init({ data });
 declare global {
@@ -56,9 +53,6 @@ const GameMessage: React.FC<GameMessageProps> = ({
   text,
   status,
 }) => {
-  {
-    status === 0 ? "" : vibration.impactOccurred("heavy");
-  }
   return (
     <>
       {status === 0 ? (

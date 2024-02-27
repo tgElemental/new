@@ -93,9 +93,7 @@ const GameMessage: React.FC<GameMessageProps> = ({
                   {extraElementName}
                 </Text>
               </Timeline.Item>
-            ) : (
-              ""
-            )}
+            ) : null}
             <Timeline.Item
               bullet={<em-emoji id="moneybag" Size="2em"></em-emoji>}
               title="امتیاز"

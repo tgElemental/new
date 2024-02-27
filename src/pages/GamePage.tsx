@@ -55,6 +55,7 @@ const GamePage = () => {
     score: 0,
     extra: "",
     remain: 0,
+    text: "",
   });
 
   const showNotification = (elementName: string, message: string) => {
@@ -95,6 +96,7 @@ const GamePage = () => {
           extra: response.data.extra ? elementNames[response.data.extra] : "",
           remain: response.data.remain,
           modalOpened: true,
+          text: response.data.text,
         });
         notifications.clean(); // close notifications
       } catch (error) {
@@ -240,6 +242,7 @@ const GamePage = () => {
               score={state.score}
               extraElementName={state.extra}
               remain={state.remain}
+              text={state.text}
             />
           </Modal.Body>
         </Modal.Content>

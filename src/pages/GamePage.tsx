@@ -106,6 +106,10 @@ const GamePage = () => {
         }
       } catch (error) {
         console.error("Error playing game:", error);
+        notifications.show({
+          title: "خراب شد",
+          message: "اینترنتت وصله؟",
+        });
       }
     };
   }

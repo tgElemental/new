@@ -234,11 +234,8 @@ const GamePage = () => {
       >
         <Modal.Overlay />
         <Modal.Content bg={state.status === 0 ? "red" : "white"}>
-          <Modal.Header>
-            <Modal.Title
-              style={{ fontWeight: 900, fontSize: 20 }}
-              bg={state.status === 0 ? "red" : "white"}
-            >
+          <Modal.Header bg={state.status === 0 ? "red" : "white"}>
+            <Modal.Title style={{ fontWeight: 900, fontSize: 20 }}>
               <Center>نتیجه این راند</Center>
             </Modal.Title>
             <Modal.CloseButton />

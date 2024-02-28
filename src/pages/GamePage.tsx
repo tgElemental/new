@@ -131,6 +131,7 @@ const GamePage = () => {
           id="water"
           icon={wateremoji}
           onClick={clicking("water")}
+          bg={isLoading || user.water !== 0 ? "initial" : "gray"}
         >
           <LoadingOverlay
             visible={state.visible}
@@ -139,10 +140,11 @@ const GamePage = () => {
             bg={"blue"}
           />
           <Indicator
+            disabled={!isLoading || user.water == 0}
             color="blue"
             size="lg"
             radius="md"
-            label={isLoading ? "" : user.water}
+            label={user.water}
             position="middle-start"
             withBorder
             processing={isLoading}
@@ -151,6 +153,7 @@ const GamePage = () => {
           </Indicator>
         </DraggableBlockquote>
         <DraggableBlockquote
+          bg={isLoading || user.wind !== 0 ? "initial" : "gray"}
           id="wind"
           icon={windemoji}
           onClick={clicking("wind")}
@@ -162,10 +165,11 @@ const GamePage = () => {
             bg={"teal"}
           />
           <Indicator
+            disabled={!isLoading || user.wind == 0}
             color="teal"
             size="lg"
             radius="md"
-            label={isLoading ? "" : user.wind}
+            label={user.wind}
             position="middle-start"
             withBorder
             processing={isLoading}
@@ -174,6 +178,7 @@ const GamePage = () => {
           </Indicator>
         </DraggableBlockquote>
         <DraggableBlockquote
+          bg={isLoading || user.earth !== 0 ? "initial" : "gray"}
           id="soil"
           icon={soilemoji}
           onClick={clicking("soil")}
@@ -185,10 +190,11 @@ const GamePage = () => {
             bg={"brown"}
           />
           <Indicator
+            disabled={!isLoading || user.earth == 0}
             color="brown"
             size="lg"
             radius="md"
-            label={isLoading ? "" : user.earth}
+            label={user.earth}
             position="middle-start"
             withBorder
             processing={isLoading}
@@ -197,6 +203,7 @@ const GamePage = () => {
           </Indicator>
         </DraggableBlockquote>
         <DraggableBlockquote
+          bg={isLoading || user.fire !== 0 ? "initial" : "gray"}
           id="fire"
           icon={fireemoji}
           onClick={clicking("fire")}
@@ -208,10 +215,11 @@ const GamePage = () => {
             bg={"orange"}
           />
           <Indicator
+            disabled={!isLoading || user.fire == 0}
             color="orange"
             size="lg"
             radius="md"
-            label={isLoading ? "" : user.fire}
+            label={user.fire}
             position="middle-start"
             withBorder
             processing={isLoading}

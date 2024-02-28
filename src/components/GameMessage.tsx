@@ -1,9 +1,10 @@
 // GameMessage.tsx
-import { Card, Text, Timeline } from "@mantine/core";
+import { Alert, Text, Timeline } from "@mantine/core";
 import React from "react";
 import data from "@emoji-mart/data";
 import { init } from "emoji-mart";
 import ConfettiExplosion from "react-confetti-explosion";
+import { IconInfoCircle } from "@tabler/icons-react";
 
 init({ data });
 declare global {
@@ -56,9 +57,14 @@ const GameMessage: React.FC<GameMessageProps> = ({
   return (
     <>
       {status === 0 ? (
-        <Card color="white" shadow="xl" m={"xl"} p={"xl"}>
+        <Alert
+          variant="filled"
+          color="red"
+          title="خطا"
+          icon={<IconInfoCircle />}
+        >
           {text}
-        </Card>
+        </Alert>
       ) : (
         <>
           <ConfettiExplosion zIndex={9999999999} />

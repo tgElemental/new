@@ -2,8 +2,10 @@ import {
   Blockquote,
   Card,
   Group,
+  MantineColor,
   SimpleGrid,
   Space,
+  StyleProp,
   ThemeIcon,
 } from "@mantine/core";
 import {
@@ -18,12 +20,14 @@ interface DraggableBlockquoteProps {
   icon: ReactNode; // Assuming 'icon' is a ReactNode, adjust the type as necessary
   children: ReactNode; // Assuming 'children' is a ReactNode, adjust the type as necessary
   onClick?: () => void;
+  bg: StyleProp<MantineColor>;
 }
 
 export const DraggableBlockquote: React.FC<DraggableBlockquoteProps> = ({
   icon,
   children,
   onClick,
+  bg,
 }) => {
   return (
     <Blockquote
@@ -39,6 +43,7 @@ export const DraggableBlockquote: React.FC<DraggableBlockquoteProps> = ({
       w={"95%"}
       ms={"xs"}
       radius={0}
+      bg={bg}
     >
       <Space h="xl" />
       {children}

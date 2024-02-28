@@ -9,7 +9,6 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          // Group your dependencies into a 'vendor' chunk
           vendor: [
             "react",
             "react-dom",

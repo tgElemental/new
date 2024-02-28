@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { Terser, defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import basicSsl from "@vitejs/plugin-basic-ssl";
 
@@ -31,6 +31,7 @@ export default defineConfig({
     },
     outDir: "./docs",
     chunkSizeWarningLimit: 600,
+    minify: "terser",
   },
   css: {
     preprocessorOptions: {

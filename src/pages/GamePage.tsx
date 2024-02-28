@@ -128,6 +128,7 @@ const GamePage = () => {
     <>
       <SimpleGrid cols={2}>
         <DraggableBlockquote
+          color={"blue"}
           id="water"
           icon={wateremoji}
           onClick={clicking("water")}
@@ -153,6 +154,7 @@ const GamePage = () => {
           </Indicator>
         </DraggableBlockquote>
         <DraggableBlockquote
+          color={"cyan"}
           bg={isLoading || user.wind !== 0 ? "initial" : "gray"}
           id="wind"
           icon={windemoji}
@@ -178,6 +180,7 @@ const GamePage = () => {
           </Indicator>
         </DraggableBlockquote>
         <DraggableBlockquote
+          color={"brown"}
           bg={isLoading || user.earth !== 0 ? "initial" : "gray"}
           id="soil"
           icon={soilemoji}
@@ -207,6 +210,7 @@ const GamePage = () => {
           id="fire"
           icon={fireemoji}
           onClick={clicking("fire")}
+          color={"orange"}
         >
           <LoadingOverlay
             visible={state.visible}

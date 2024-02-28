@@ -21,6 +21,7 @@ interface DraggableBlockquoteProps {
   children: ReactNode; // Assuming 'children' is a ReactNode, adjust the type as necessary
   onClick?: () => void;
   bg: StyleProp<MantineColor>;
+  color: StyleProp<MantineColor>;
 }
 
 export const DraggableBlockquote: React.FC<DraggableBlockquoteProps> = ({
@@ -28,6 +29,7 @@ export const DraggableBlockquote: React.FC<DraggableBlockquoteProps> = ({
   children,
   onClick,
   bg,
+  color,
 }) => {
   return (
     <Blockquote
@@ -44,6 +46,7 @@ export const DraggableBlockquote: React.FC<DraggableBlockquoteProps> = ({
       ms={"xs"}
       radius={0}
       bg={bg}
+      color={color as MantineColor}
     >
       <Space h="xl" />
       {children}

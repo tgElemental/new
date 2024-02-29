@@ -4,6 +4,7 @@ import {
   LoadingOverlay,
   Modal,
   SimpleGrid,
+  lighten,
 } from "@mantine/core";
 import { DraggableBlockquote } from "../components/DraggableBlockquote";
 import data from "@emoji-mart/data";
@@ -70,7 +71,8 @@ const GamePage = () => {
   };
 
   function clicking(element: string): () => void {
-    vibration.notificationOccurred("success");
+    vibration.impactOccurred("heavy");
+    // vibration.notificationOccurred("success");
     const elementNames: { [key: string]: string } = {
       water: "آب",
       wind: "باد",
@@ -100,10 +102,6 @@ const GamePage = () => {
           status: response.data.status,
         });
         notifications.clean(); // close notifications
-        // Check if status is  1 and trigger vibration
-        if (response.data.status === 1) {
-          vibration.impactOccurred("heavy");
-        }
       } catch (error) {
         console.error("Error playing game:", error);
         notifications.show({
@@ -132,7 +130,7 @@ const GamePage = () => {
           id="water"
           icon={wateremoji}
           onClick={clicking("water")}
-          bg={isLoading || user.water !== 0 ? "initial" : "gray"}
+          bg={isLoading || user.water !== 0 ? lighten("blue", 0.5) : "gray"}
         >
           <LoadingOverlay
             visible={state.visible}
@@ -155,7 +153,7 @@ const GamePage = () => {
         </DraggableBlockquote>
         <DraggableBlockquote
           color={"cyan"}
-          bg={isLoading || user.wind !== 0 ? "initial" : "gray"}
+          bg={isLoading || user.wind !== 0 ? lighten("teal", 0.5) : "gray"}
           id="wind"
           icon={windemoji}
           onClick={clicking("wind")}
@@ -181,7 +179,7 @@ const GamePage = () => {
         </DraggableBlockquote>
         <DraggableBlockquote
           color={"brown"}
-          bg={isLoading || user.earth !== 0 ? "initial" : "gray"}
+          bg={isLoading || user.earth !== 0 ? lighten("brown", 0.5) : "gray"}
           id="soil"
           icon={soilemoji}
           onClick={clicking("soil")}
@@ -206,7 +204,7 @@ const GamePage = () => {
           </Indicator>
         </DraggableBlockquote>
         <DraggableBlockquote
-          bg={isLoading || user.fire !== 0 ? "initial" : "gray"}
+          bg={isLoading || user.fire !== 0 ? lighten("orange", 0.5) : "gray"}
           id="fire"
           icon={fireemoji}
           onClick={clicking("fire")}

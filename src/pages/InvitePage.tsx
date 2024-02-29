@@ -1,15 +1,15 @@
-import { Button, Group } from "@mantine/core";
-import WebApp from "@twa-dev/sdk";
-import useUser from "../hooks/useUser";
-import { useClipboard } from "@mantine/hooks";
-import { IconCopy, IconUserPlus } from "@tabler/icons-react";
-import { useEffect, useState } from "react";
+import { Button, Group } from '@mantine/core';
+import WebApp from '@twa-dev/sdk';
+import useUser from '../hooks/useUser';
+import { useClipboard } from '@mantine/hooks';
+import { IconCopy, IconUserPlus } from '@tabler/icons-react';
+import { useEffect, useState } from 'react';
 
 const InvitePage = () => {
   const clipboard = useClipboard({ timeout: 500 });
   const { user } = useUser();
   const [isLoading, setIsLoading] = useState(true); // State to track loading status
-  const [invitelink, setInvitelink] = useState(""); // State to store invitelink
+  const [invitelink, setInvitelink] = useState(''); // State to store invitelink
 
   useEffect(() => {
     if (user && user.userid) {
@@ -22,9 +22,9 @@ const InvitePage = () => {
   const invite = () => {
     if (!isLoading) {
       WebApp.switchInlineQuery(
-        "به  بازی  عناصر  بپیوندید  و ۲۰  عنصر  جدید  برای  بازی  دریافت  کنید https://t.me/elementalgamebot?start=" +
+        'به  بازی  عناصر  بپیوندید  و ۲۰  عنصر  جدید  برای  بازی  دریافت  کنید https://t.me/elementalgamebot?start=' +
           invitelink,
-        ["users"],
+        ['users']
       );
     }
   };
@@ -35,7 +35,7 @@ const InvitePage = () => {
       کد معرف شما : {invitelink} <br />
       دوستان خود را به بازی عناصر دعوت کنید با دعوت هر نفر ۲۰ عنصر جدید، ۵ عدد
       از هر عنصر دریافت می‌کنید. <br />
-      <Group gap={"xs"}>
+      <Group gap={'xs'}>
         <Button
           onClick={invite}
           leftSection={<IconUserPlus />}
@@ -45,14 +45,14 @@ const InvitePage = () => {
         </Button>
 
         <Button
-          color={clipboard.copied ? "teal" : "blue"}
+          color={clipboard.copied ? 'teal' : 'blue'}
           onClick={() =>
-            clipboard.copy("https://t.me/elementalgamebot?start=" + invitelink)
+            clipboard.copy('https://t.me/elementalgamebot?start=' + invitelink)
           }
           leftSection={<IconCopy />}
           disabled={isLoading} // Disable button if loading
         >
-          {clipboard.copied ? "کپی شد" : "کپی لینک دعوت"}
+          {clipboard.copied ? 'کپی شد' : 'کپی لینک دعوت'}
         </Button>
       </Group>
       دعوت شده های شما : {user.invited_count}

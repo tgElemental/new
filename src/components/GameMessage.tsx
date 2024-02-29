@@ -1,10 +1,10 @@
 // GameMessage.tsx
-import { Alert, Text, Timeline } from "@mantine/core";
-import React from "react";
-import data from "@emoji-mart/data";
-import { init } from "emoji-mart";
-import ConfettiExplosion from "react-confetti-explosion";
-import { IconInfoCircle } from "@tabler/icons-react";
+import { Alert, Text, Timeline } from '@mantine/core';
+import React from 'react';
+import data from '@emoji-mart/data';
+import { init } from 'emoji-mart';
+import ConfettiExplosion from 'react-confetti-explosion';
+import { IconInfoCircle } from '@tabler/icons-react';
 
 init({ data });
 declare global {
@@ -12,7 +12,7 @@ declare global {
   namespace JSX {
     interface IntrinsicElements {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      "em-emoji": any;
+      'em-emoji': any;
     }
   }
 }

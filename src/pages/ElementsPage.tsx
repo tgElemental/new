@@ -1,7 +1,7 @@
-import { Blockquote, Box, Indicator, SimpleGrid } from "@mantine/core";
-import data from "@emoji-mart/data";
-import { init } from "emoji-mart";
-import useUser from "../hooks/useUser";
+import { Blockquote, Box, Indicator, SimpleGrid } from '@mantine/core';
+import data from '@emoji-mart/data';
+import { init } from 'emoji-mart';
+import useUser from '../hooks/useUser';
 
 init({ data });
 declare global {
@@ -9,7 +9,7 @@ declare global {
   namespace JSX {
     interface IntrinsicElements {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      "em-emoji": any;
+      'em-emoji': any;
     }
   }
 }
@@ -26,7 +26,7 @@ const ElementsPage = () => {
 
   return (
     <>
-      <Box p={"md"}>
+      <Box p={'md'}>
         <Blockquote
           color="teal"
           radius="xs"
@@ -47,7 +47,7 @@ const ElementsPage = () => {
           </Indicator>
         </Blockquote>
       </Box>
-      <Box mb={"xl"} p={"md"}>
+      <Box mb={'xl'} p={'md'}>
         <Blockquote
           color="lime"
           radius="xs"
@@ -69,7 +69,7 @@ const ElementsPage = () => {
         </Blockquote>
       </Box>
       <SimpleGrid cols={2}>
-        <Box m={"xs"} p={"ms"}>
+        <Box m={'xs'} p={'ms'}>
           <Blockquote
             color="cyan"
             radius="xl"
@@ -81,7 +81,7 @@ const ElementsPage = () => {
               color="cyan"
               size="lg"
               radius="sm"
-              label={isLoading ? "" : user.wind}
+              label={isLoading ? '' : user.wind}
               position="middle-start"
               withBorder
               processing={isLoading}
@@ -90,7 +90,7 @@ const ElementsPage = () => {
             </Indicator>
           </Blockquote>
         </Box>
-        <Box m={"xs"} p={"ms"}>
+        <Box m={'xs'} p={'ms'}>
           <Blockquote
             color="brown"
             radius="xl"
@@ -102,7 +102,7 @@ const ElementsPage = () => {
               color="brown"
               size="lg"
               radius="sm"
-              label={isLoading ? "" : user.earth}
+              label={isLoading ? '' : user.earth}
               position="middle-start"
               withBorder
               processing={isLoading}
@@ -111,7 +111,7 @@ const ElementsPage = () => {
             </Indicator>
           </Blockquote>
         </Box>
-        <Box m={"xs"} p={"ms"}>
+        <Box m={'xs'} p={'ms'}>
           <Blockquote
             color="blue"
             radius="xl"
@@ -123,7 +123,7 @@ const ElementsPage = () => {
               color="blue"
               size="lg"
               radius="sm"
-              label={isLoading ? "" : user.water}
+              label={isLoading ? '' : user.water}
               position="middle-start"
               withBorder
               processing={isLoading}
@@ -132,7 +132,7 @@ const ElementsPage = () => {
             </Indicator>
           </Blockquote>
         </Box>
-        <Box m={"xs"} p={"ms"}>
+        <Box m={'xs'} p={'ms'}>
           <Blockquote
             color="orange"
             radius="xl"
@@ -144,7 +144,7 @@ const ElementsPage = () => {
               color="orange"
               size="lg"
               radius="sm"
-              label={isLoading ? "" : user.fire}
+              label={isLoading ? '' : user.fire}
               position="middle-start"
               withBorder
               processing={isLoading}

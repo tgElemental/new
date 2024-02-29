@@ -5,17 +5,17 @@ import {
   Modal,
   SimpleGrid,
   lighten,
-} from "@mantine/core";
-import { DraggableBlockquote } from "../components/DraggableBlockquote";
-import data from "@emoji-mart/data";
-import { init } from "emoji-mart";
-import { notifications } from "@mantine/notifications";
-import useUser from "../hooks/useUser";
-import axios from "axios";
-import GameMessage from "../components/GameMessage";
-import { useSetState } from "@mantine/hooks";
-import WebApp from "@twa-dev/sdk";
-import { useCallback } from "react";
+} from '@mantine/core';
+import { DraggableBlockquote } from '../components/DraggableBlockquote';
+import data from '@emoji-mart/data';
+import { init } from 'emoji-mart';
+import { notifications } from '@mantine/notifications';
+import useUser from '../hooks/useUser';
+import axios from 'axios';
+import GameMessage from '../components/GameMessage';
+import { useSetState } from '@mantine/hooks';
+import WebApp from '@twa-dev/sdk';
+import { useCallback } from 'react';
 const vibration = WebApp.HapticFeedback;
 
 init({ data });
@@ -24,22 +24,22 @@ declare global {
   namespace JSX {
     interface IntrinsicElements {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      "em-emoji": any;
+      'em-emoji': any;
     }
   }
 }
 
 const GamePage = () => {
-  const createEmojiComponent = (id: string, size = "2em") => (
+  const createEmojiComponent = (id: string, size = '2em') => (
     <div style={{ zIndex: 10 }}>
       <em-emoji id={id} Size={size}></em-emoji>
     </div>
   );
 
-  const windemoji = createEmojiComponent("wind_blowing_face");
-  const soilemoji = createEmojiComponent("large_brown_circle");
-  const fireemoji = createEmojiComponent("fire");
-  const wateremoji = createEmojiComponent("droplet");
+  const windemoji = createEmojiComponent('wind_blowing_face');
+  const soilemoji = createEmojiComponent('large_brown_circle');
+  const fireemoji = createEmojiComponent('fire');
+  const wateremoji = createEmojiComponent('droplet');
 
   // const windemoji = (
   //   <div style={{ zIndex: 10 }}>
@@ -65,12 +65,12 @@ const GamePage = () => {
   const [state, setState] = useSetState({
     visible: false,
     modalOpened: false,
-    elementName: "",
-    botElementName: "",
+    elementName: '',
+    botElementName: '',
     score: 0,
-    extra: "",
+    extra: '',
     remain: 0,
-    text: "",
+    text: '',
     status: 1,
   });
 
@@ -126,14 +126,14 @@ const GamePage = () => {
 
   const clicking = useCallback(
     (element: string) => {
-      vibration.impactOccurred("heavy");
+      vibration.impactOccurred('heavy');
       const elementNames: { [key: string]: string } = {
-        water: "آب",
-        wind: "باد",
-        soil: "خاک",
-        fire: "آتش",
-        tree: "درخت",
-        light: "نور",
+        water: 'آب',
+        wind: 'باد',
+        soil: 'خاک',
+        fire: 'آتش',
+        tree: 'درخت',
+        light: 'نور',
       };
       const elementName = elementNames[element];
       const message = `یه دونه کارت عنصر ${elementName} بازی کردی، بزار ببینیم چی میشه !`;
@@ -142,14 +142,14 @@ const GamePage = () => {
         showNotification(elementName, message);
         try {
           const response = await axios.get(
-            `https://api.rahomaskan.com/api/game?element=${element}&uid=${user.userid}`,
+            `https://api.rahomaskan.com/api/game?element=${element}&uid=${user.userid}`
           );
 
           setState({
             elementName: elementNames[element],
             botElementName: elementNames[response.data.botelement],
             score: response.data.score,
-            extra: response.data.extra ? elementNames[response.data.extra] : "",
+            extra: response.data.extra ? elementNames[response.data.extra] : '',
             remain: response.data.remain,
             modalOpened: true,
             text: response.data.text,
@@ -157,15 +157,15 @@ const GamePage = () => {
           });
           notifications.clean(); // close notifications
         } catch (error) {
-          console.error("Error playing game:", error);
+          console.error('Error playing game:', error);
           notifications.show({
-            title: "خراب شد",
-            message: "اینترنتت وصله؟",
+            title: 'خراب شد',
+            message: 'اینترنتت وصله؟',
           });
         }
       };
     },
-    [user.userid, showNotification, setState],
+    [user.userid, showNotification, setState]
   );
 
   const { refresh } = useUser();
@@ -182,17 +182,17 @@ const GamePage = () => {
     <>
       <SimpleGrid cols={2}>
         <DraggableBlockquote
-          color={"blue"}
+          color={'blue'}
           id="water"
           icon={wateremoji}
-          onClick={clicking("water")}
-          bg={isLoading || user.water !== 0 ? lighten("blue", 0.5) : "gray"}
+          onClick={clicking('water')}
+          bg={isLoading || user.water !== 0 ? lighten('blue', 0.5) : 'gray'}
         >
           <LoadingOverlay
             visible={state.visible}
             zIndex={9}
-            loaderProps={{ color: "dark", type: "bars", size: "xs" }}
-            bg={"blue"}
+            loaderProps={{ color: 'dark', type: 'bars', size: 'xs' }}
+            bg={'blue'}
           />
           <Indicator
             disabled={!isLoading || user.water == 0}
@@ -208,17 +208,17 @@ const GamePage = () => {
           </Indicator>
         </DraggableBlockquote>
         <DraggableBlockquote
-          color={"cyan"}
-          bg={isLoading || user.wind !== 0 ? lighten("teal", 0.5) : "gray"}
+          color={'cyan'}
+          bg={isLoading || user.wind !== 0 ? lighten('teal', 0.5) : 'gray'}
           id="wind"
           icon={windemoji}
-          onClick={clicking("wind")}
+          onClick={clicking('wind')}
         >
           <LoadingOverlay
             visible={state.visible}
             zIndex={9}
-            loaderProps={{ color: "dark", type: "bars", size: "xs" }}
-            bg={"teal"}
+            loaderProps={{ color: 'dark', type: 'bars', size: 'xs' }}
+            bg={'teal'}
           />
           <Indicator
             disabled={!isLoading || user.wind == 0}
@@ -234,17 +234,17 @@ const GamePage = () => {
           </Indicator>
         </DraggableBlockquote>
         <DraggableBlockquote
-          color={"brown"}
-          bg={isLoading || user.earth !== 0 ? lighten("brown", 0.5) : "gray"}
+          color={'brown'}
+          bg={isLoading || user.earth !== 0 ? lighten('brown', 0.5) : 'gray'}
           id="soil"
           icon={soilemoji}
-          onClick={clicking("soil")}
+          onClick={clicking('soil')}
         >
           <LoadingOverlay
             visible={state.visible}
             zIndex={9}
-            loaderProps={{ color: "dark", type: "bars", size: "xs" }}
-            bg={"brown"}
+            loaderProps={{ color: 'dark', type: 'bars', size: 'xs' }}
+            bg={'brown'}
           />
           <Indicator
             disabled={!isLoading || user.earth == 0}
@@ -260,17 +260,17 @@ const GamePage = () => {
           </Indicator>
         </DraggableBlockquote>
         <DraggableBlockquote
-          bg={isLoading || user.fire !== 0 ? lighten("orange", 0.5) : "gray"}
+          bg={isLoading || user.fire !== 0 ? lighten('orange', 0.5) : 'gray'}
           id="fire"
           icon={fireemoji}
-          onClick={clicking("fire")}
-          color={"orange"}
+          onClick={clicking('fire')}
+          color={'orange'}
         >
           <LoadingOverlay
             visible={state.visible}
             zIndex={9}
-            loaderProps={{ color: "dark", type: "bars", size: "xs" }}
-            bg={"orange"}
+            loaderProps={{ color: 'dark', type: 'bars', size: 'xs' }}
+            bg={'orange'}
           />
           <Indicator
             disabled={!isLoading || user.fire == 0}
@@ -292,15 +292,15 @@ const GamePage = () => {
         opened={state.modalOpened}
         onClose={handleModalClose}
         transitionProps={{
-          transition: "slide-down",
+          transition: 'slide-down',
           duration: 300,
-          timingFunction: "linear",
+          timingFunction: 'linear',
         }}
         size="75%"
       >
         <Modal.Overlay />
-        <Modal.Content bg={state.status === 0 ? "red" : "white"}>
-          <Modal.Header bg={state.status === 0 ? "red" : "white"}>
+        <Modal.Content bg={state.status === 0 ? 'red' : 'white'}>
+          <Modal.Header bg={state.status === 0 ? 'red' : 'white'}>
             <Modal.Title style={{ fontWeight: 900, fontSize: 20 }}>
               <Center>نتیجه این راند</Center>
             </Modal.Title>

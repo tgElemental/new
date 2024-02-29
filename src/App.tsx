@@ -1,15 +1,13 @@
-import HomePage from "./pages/HomePage";
-import { Route, Routes } from "react-router-dom";
-import ProfilePage from "./pages/ProfilePage";
-import GamePage from "./pages/GamePage";
-import HelpPage from "./pages/HelpPage";
-import InvitePage from "./pages/InvitePage";
-import RankingPage from "./pages/RankingPage";
-import ElementsPage from "./pages/ElementsPage";
+import HomePage from './pages/HomePage';
+import { Route, Routes } from 'react-router-dom';
+import ProfilePage from './pages/ProfilePage';
+import GamePage from './pages/GamePage';
+import HelpPage from './pages/HelpPage';
+import InvitePage from './pages/InvitePage';
+import RankingPage from './pages/RankingPage';
+import ElementsPage from './pages/ElementsPage';
 
 function App() {
-  // WebApp.BackButton.show();
-
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />

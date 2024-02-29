@@ -1,6 +1,6 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import basicSsl from "@vitejs/plugin-basic-ssl";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import basicSsl from '@vitejs/plugin-basic-ssl';
 
 export default defineConfig({
   plugins: [react(), basicSsl()],
@@ -10,28 +10,28 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: [
-            "react",
-            "react-dom",
-            "react-router-dom",
-            "react-transition-group",
-            "@twa-dev/sdk",
-            "react-microsoft-clarity",
+            'react',
+            'react-dom',
+            'react-router-dom',
+            'react-transition-group',
+            '@twa-dev/sdk',
+            'react-microsoft-clarity',
           ],
-          app: ["./src/main.tsx", "./src/App.tsx"],
-          icons: ["emoji-mart", "@tabler/icons-react"],
+          app: ['./src/main.tsx', './src/App.tsx'],
+          icons: ['emoji-mart', '@tabler/icons-react'],
           framework: [
-            "@mantine/carousel",
-            "@mantine/core",
-            "@mantine/hooks",
-            "@mantine/modals",
-            "@mantine/notifications",
+            '@mantine/carousel',
+            '@mantine/core',
+            '@mantine/hooks',
+            '@mantine/modals',
+            '@mantine/notifications',
           ],
         },
       },
     },
-    outDir: "./docs",
+    outDir: './docs',
     chunkSizeWarningLimit: 600,
-    minify: "terser",
+    minify: 'terser',
   },
   css: {
     preprocessorOptions: {
@@ -40,5 +40,5 @@ export default defineConfig({
       },
     },
   },
-  base: "./",
+  base: './',
 });

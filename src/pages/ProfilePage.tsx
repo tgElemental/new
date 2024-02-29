@@ -1,13 +1,13 @@
-import { Center, Loader, SimpleGrid, Skeleton } from "@mantine/core";
+import { Center, Loader, SimpleGrid, Skeleton } from '@mantine/core';
 
 const ProfilePage = () => {
   return (
     <>
       <h1>پروفایل</h1>
-      <SimpleGrid cols={3} p={"xs"}>
-        <Skeleton height={150} width={"100%"} mb="xl" />
-        <Skeleton height={150} width={"100%"} mb="xl" />
-        <Skeleton height={150} width={"100%"} mb="xl" />
+      <SimpleGrid cols={3} p={'xs'}>
+        <Skeleton height={150} width={'100%'} mb="xl" />
+        <Skeleton height={150} width={'100%'} mb="xl" />
+        <Skeleton height={150} width={'100%'} mb="xl" />
       </SimpleGrid>
       <Center>
         <Loader color="blue" size="xl" type="dots" />

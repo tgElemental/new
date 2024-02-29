@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import {
   Text,
   Card,
@@ -12,16 +12,16 @@ import {
   Skeleton,
   Box,
   Divider,
-} from "@mantine/core";
-import data from "@emoji-mart/data";
-import { init } from "emoji-mart";
+} from '@mantine/core';
+import data from '@emoji-mart/data';
+import { init } from 'emoji-mart';
 init({ data });
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace JSX {
     interface IntrinsicElements {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      "em-emoji": any;
+      'em-emoji': any;
     }
   }
 }
@@ -41,22 +41,22 @@ const RankingPage = () => {
     const fetchData = async () => {
       try {
         const treeResponse = await fetch(
-          "https://api.rahomaskan.com/api/ranking/tree",
+          'https://api.rahomaskan.com/api/ranking/tree'
         );
         const lightResponse = await fetch(
-          "https://api.rahomaskan.com/api/ranking/light",
+          'https://api.rahomaskan.com/api/ranking/light'
         );
         const treeData = await treeResponse.json();
         const lightData = await lightResponse.json();
 
         setTreeData(treeData);
         setLightData(lightData);
-        const response = await fetch("https://api.rahomaskan.com/api/ranking");
+        const response = await fetch('https://api.rahomaskan.com/api/ranking');
         const jsonData = await response.json();
         setData(jsonData);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
         setLoading(false);
       }
     };
@@ -82,10 +82,10 @@ const RankingPage = () => {
   if (loading) {
     return (
       <>
-        <SimpleGrid cols={3} p={"xs"}>
-          <Skeleton height={150} width={"100%"} mb="xl" />
-          <Skeleton height={150} width={"100%"} mb="xl" />
-          <Skeleton height={150} width={"100%"} mb="xl" />
+        <SimpleGrid cols={3} p={'xs'}>
+          <Skeleton height={150} width={'100%'} mb="xl" />
+          <Skeleton height={150} width={'100%'} mb="xl" />
+          <Skeleton height={150} width={'100%'} mb="xl" />
         </SimpleGrid>
         <Center>
           <Loader color="blue" size="xl" type="dots" />
@@ -106,10 +106,10 @@ const RankingPage = () => {
     <>
       {loading ? (
         <>
-          <SimpleGrid cols={3} p={"xs"}>
-            <Skeleton height={150} width={"100%"} mb="xl" />
-            <Skeleton height={150} width={"100%"} mb="xl" />
-            <Skeleton height={150} width={"100%"} mb="xl" />
+          <SimpleGrid cols={3} p={'xs'}>
+            <Skeleton height={150} width={'100%'} mb="xl" />
+            <Skeleton height={150} width={'100%'} mb="xl" />
+            <Skeleton height={150} width={'100%'} mb="xl" />
           </SimpleGrid>
           <Center>
             <Loader color="blue" size="xl" type="dots" />
@@ -133,17 +133,17 @@ const RankingPage = () => {
               </>
             }
           />
-          <SimpleGrid cols={3} p={"xs"}>
+          <SimpleGrid cols={3} p={'xs'}>
             {data.slice(0, 3).map((item, index) => (
               <Card withBorder shadow="sm" radius="md" key={index}>
                 <Card.Section withBorder inheritPadding py="xs">
                   <Group justify="space-between">
-                    <Text fw={900} style={{ textAlign: "center" }}>
+                    <Text fw={900} style={{ textAlign: 'center' }}>
                       {getRankText(index)}
                     </Text>
                   </Group>
                 </Card.Section>
-                <Text mih={"50"} mt="sm" c="dimmed" size="sm">
+                <Text mih={'50'} mt="sm" c="dimmed" size="sm">
                   <Text span inherit c="var(--mantine-color-anchor)">
                     {item.name}
                   </Text>
@@ -189,17 +189,17 @@ const RankingPage = () => {
               </>
             }
           />
-          <SimpleGrid cols={3} p={"xs"}>
+          <SimpleGrid cols={3} p={'xs'}>
             {topTreeUsers.map((item, index) => (
               <Card
                 key={index}
                 withBorder
                 shadow="sm"
                 radius="md"
-                bg={"teal"}
+                bg={'teal'}
                 style={{
-                  padding: index === 0 ? "20px" : index === 1 ? "15px" : "10px",
-                  margin: index === 0 ? "0" : index === 1 ? "10px" : "20px",
+                  padding: index === 0 ? '20px' : index === 1 ? '15px' : '10px',
+                  margin: index === 0 ? '0' : index === 1 ? '10px' : '20px',
                 }}
               >
                 <Card.Section withBorder inheritPadding py="xs">
@@ -221,18 +221,18 @@ const RankingPage = () => {
               </>
             }
           />
-          <SimpleGrid cols={3} p={"xs"}>
+          <SimpleGrid cols={3} p={'xs'}>
             {topLightUsers.map((item, index) => (
               <Card
                 key={index}
                 withBorder
                 shadow="sm"
                 radius="md"
-                bg={"orange"}
+                bg={'orange'}
                 variant="light"
                 style={{
-                  padding: index === 0 ? "20px" : index === 1 ? "15px" : "10px",
-                  margin: index === 0 ? "0" : index === 1 ? "10px" : "20px",
+                  padding: index === 0 ? '20px' : index === 1 ? '15px' : '10px',
+                  margin: index === 0 ? '0' : index === 1 ? '10px' : '20px',
                 }}
               >
                 <Card.Section withBorder inheritPadding py="xs">
@@ -246,9 +246,9 @@ const RankingPage = () => {
 
           <Stack
             // h={300}
-            pt={"lg"}
-            pr={"xs"}
-            pl={"xs"}
+            pt={'lg'}
+            pr={'xs'}
+            pl={'xs'}
             bg="var(--mantine-color-body)"
             align="flex-start"
             gap="xs"
@@ -258,7 +258,7 @@ const RankingPage = () => {
                 justify="space-between"
                 fullWidth
                 leftSection={<Badge>{index + 4} </Badge>}
-                rightSection={item.score + " درخت | " + item.light + " نور "}
+                rightSection={item.score + ' درخت | ' + item.light + ' نور '}
                 variant="default"
                 mt="md"
               >

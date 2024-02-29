@@ -29,26 +29,37 @@ declare global {
 }
 
 const GamePage = () => {
-  const windemoji = (
+  const createEmojiComponent = (id: string, size = "2em") => (
     <div style={{ zIndex: 10 }}>
-      <em-emoji id="wind_blowing_face" Size="2em"></em-emoji>
+      <em-emoji id={id} Size={size}></em-emoji>
     </div>
   );
-  const soilemoji = (
-    <div style={{ zIndex: 10 }}>
-      <em-emoji id="large_brown_circle" Size="2em"></em-emoji>
-    </div>
-  );
-  const fireemoji = (
-    <div style={{ zIndex: 10 }}>
-      <em-emoji id="fire" Size="2em"></em-emoji>
-    </div>
-  );
-  const wateremoji = (
-    <div style={{ zIndex: 10 }}>
-      <em-emoji id="droplet" Size="2em"></em-emoji>
-    </div>
-  );
+
+  const windemoji = createEmojiComponent("wind_blowing_face");
+  const soilemoji = createEmojiComponent("large_brown_circle");
+  const fireemoji = createEmojiComponent("fire");
+  const wateremoji = createEmojiComponent("droplet");
+
+  // const windemoji = (
+  //   <div style={{ zIndex: 10 }}>
+  //     <em-emoji id="wind_blowing_face" Size="2em"></em-emoji>
+  //   </div>
+  // );
+  // const soilemoji = (
+  //   <div style={{ zIndex: 10 }}>
+  //     <em-emoji id="large_brown_circle" Size="2em"></em-emoji>
+  //   </div>
+  // );
+  // const fireemoji = (
+  //   <div style={{ zIndex: 10 }}>
+  //     <em-emoji id="fire" Size="2em"></em-emoji>
+  //   </div>
+  // );
+  // const wateremoji = (
+  //   <div style={{ zIndex: 10 }}>
+  //     <em-emoji id="droplet" Size="2em"></em-emoji>
+  //   </div>
+  // );
   const { user, isLoading } = useUser();
   const [state, setState] = useSetState({
     visible: false,

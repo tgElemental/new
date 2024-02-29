@@ -15,6 +15,7 @@ import axios from "axios";
 import GameMessage from "../components/GameMessage";
 import { useSetState } from "@mantine/hooks";
 import WebApp from "@twa-dev/sdk";
+import { useCallback } from "react";
 const vibration = WebApp.HapticFeedback;
 
 init({ data });
@@ -81,47 +82,91 @@ const GamePage = () => {
     });
   };
 
-  function clicking(element: string): () => void {
-    vibration.impactOccurred("heavy");
-    // vibration.notificationOccurred("success");
-    const elementNames: { [key: string]: string } = {
-      water: "آب",
-      wind: "باد",
-      soil: "خاک",
-      fire: "آتش",
-      tree: "درخت",
-      light: "نور",
-    };
-    const elementName = elementNames[element]; // Use 'element' directly
-    const message = `یه   دونه   کارت   عنصر  ${elementName}  بازی   کردی،   بزار   ببینیم   چی   میشه !`;
-    return async () => {
-      setState({ visible: true });
-      showNotification(elementName, message);
-      try {
-        const response = await axios.get(
-          `https://api.rahomaskan.com/api/game?element=${element}&uid=${user.userid}`,
-        );
+  // function clicking(element: string): () => void {
+  //   vibration.impactOccurred("heavy");
+  //   // vibration.notificationOccurred("success");
+  //   const elementNames: { [key: string]: string } = {
+  //     water: "آب",
+  //     wind: "باد",
+  //     soil: "خاک",
+  //     fire: "آتش",
+  //     tree: "درخت",
+  //     light: "نور",
+  //   };
+  //   const elementName = elementNames[element]; // Use 'element' directly
+  //   const message = `یه   دونه   کارت   عنصر  ${elementName}  بازی   کردی،   بزار   ببینیم   چی   میشه !`;
+  //   return async () => {
+  //     setState({ visible: true });
+  //     showNotification(elementName, message);
+  //     try {
+  //       const response = await axios.get(
+  //         `https://api.rahomaskan.com/api/game?element=${element}&uid=${user.userid}`,
+  //       );
 
-        setState({
-          elementName: elementNames[element],
-          botElementName: elementNames[response.data.botelement],
-          score: response.data.score,
-          extra: response.data.extra ? elementNames[response.data.extra] : "",
-          remain: response.data.remain,
-          modalOpened: true,
-          text: response.data.text,
-          status: response.data.status,
-        });
-        notifications.clean(); // close notifications
-      } catch (error) {
-        console.error("Error playing game:", error);
-        notifications.show({
-          title: "خراب شد",
-          message: "اینترنتت وصله؟",
-        });
-      }
-    };
-  }
+  //       setState({
+  //         elementName: elementNames[element],
+  //         botElementName: elementNames[response.data.botelement],
+  //         score: response.data.score,
+  //         extra: response.data.extra ? elementNames[response.data.extra] : "",
+  //         remain: response.data.remain,
+  //         modalOpened: true,
+  //         text: response.data.text,
+  //         status: response.data.status,
+  //       });
+  //       notifications.clean(); // close notifications
+  //     } catch (error) {
+  //       console.error("Error playing game:", error);
+  //       notifications.show({
+  //         title: "خراب شد",
+  //         message: "اینترنتت وصله؟",
+  //       });
+  //     }
+  //   };
+  // }
+
+  const clicking = useCallback(
+    (element: string) => {
+      vibration.impactOccurred("heavy");
+      const elementNames: { [key: string]: string } = {
+        water: "آب",
+        wind: "باد",
+        soil: "خاک",
+        fire: "آتش",
+        tree: "درخت",
+        light: "نور",
+      };
+      const elementName = elementNames[element];
+      const message = `یه دونه کارت عنصر ${elementName} بازی کردی، بزار ببینیم چی میشه !`;
+      return async () => {
+        setState({ visible: true });
+        showNotification(elementName, message);
+        try {
+          const response = await axios.get(
+            `https://api.rahomaskan.com/api/game?element=${element}&uid=${user.userid}`,
+          );
+
+          setState({
+            elementName: elementNames[element],
+            botElementName: elementNames[response.data.botelement],
+            score: response.data.score,
+            extra: response.data.extra ? elementNames[response.data.extra] : "",
+            remain: response.data.remain,
+            modalOpened: true,
+            text: response.data.text,
+            status: response.data.status,
+          });
+          notifications.clean(); // close notifications
+        } catch (error) {
+          console.error("Error playing game:", error);
+          notifications.show({
+            title: "خراب شد",
+            message: "اینترنتت وصله؟",
+          });
+        }
+      };
+    },
+    [user.userid, showNotification, setState],
+  );
 
   const { refresh } = useUser();
   const refreshUserData = async () => {

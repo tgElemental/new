@@ -40,27 +40,6 @@ const GamePage = () => {
   const soilemoji = createEmojiComponent('large_brown_circle');
   const fireemoji = createEmojiComponent('fire');
   const wateremoji = createEmojiComponent('droplet');
-
-  // const windemoji = (
-  //   <div style={{ zIndex: 10 }}>
-  //     <em-emoji id="wind_blowing_face" Size="2em"></em-emoji>
-  //   </div>
-  // );
-  // const soilemoji = (
-  //   <div style={{ zIndex: 10 }}>
-  //     <em-emoji id="large_brown_circle" Size="2em"></em-emoji>
-  //   </div>
-  // );
-  // const fireemoji = (
-  //   <div style={{ zIndex: 10 }}>
-  //     <em-emoji id="fire" Size="2em"></em-emoji>
-  //   </div>
-  // );
-  // const wateremoji = (
-  //   <div style={{ zIndex: 10 }}>
-  //     <em-emoji id="droplet" Size="2em"></em-emoji>
-  //   </div>
-  // );
   const { user, isLoading } = useUser();
   const [state, setState] = useSetState({
     visible: false,
@@ -81,48 +60,6 @@ const GamePage = () => {
       loading: true,
     });
   };
-
-  // function clicking(element: string): () => void {
-  //   vibration.impactOccurred("heavy");
-  //   // vibration.notificationOccurred("success");
-  //   const elementNames: { [key: string]: string } = {
-  //     water: "آب",
-  //     wind: "باد",
-  //     soil: "خاک",
-  //     fire: "آتش",
-  //     tree: "درخت",
-  //     light: "نور",
-  //   };
-  //   const elementName = elementNames[element]; // Use 'element' directly
-  //   const message = `یه   دونه   کارت   عنصر  ${elementName}  بازی   کردی،   بزار   ببینیم   چی   میشه !`;
-  //   return async () => {
-  //     setState({ visible: true });
-  //     showNotification(elementName, message);
-  //     try {
-  //       const response = await axios.get(
-  //         `https://api.rahomaskan.com/api/game?element=${element}&uid=${user.userid}`,
-  //       );
-
-  //       setState({
-  //         elementName: elementNames[element],
-  //         botElementName: elementNames[response.data.botelement],
-  //         score: response.data.score,
-  //         extra: response.data.extra ? elementNames[response.data.extra] : "",
-  //         remain: response.data.remain,
-  //         modalOpened: true,
-  //         text: response.data.text,
-  //         status: response.data.status,
-  //       });
-  //       notifications.clean(); // close notifications
-  //     } catch (error) {
-  //       console.error("Error playing game:", error);
-  //       notifications.show({
-  //         title: "خراب شد",
-  //         message: "اینترنتت وصله؟",
-  //       });
-  //     }
-  //   };
-  // }
 
   const clicking = useCallback(
     (element: string) => {

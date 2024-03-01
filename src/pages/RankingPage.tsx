@@ -255,6 +255,7 @@ const RankingPage = () => {
           >
             {data.slice(3).map((item, index) => (
               <Button
+                key={index}
                 justify="space-between"
                 fullWidth
                 leftSection={<Badge>{index + 4} </Badge>}

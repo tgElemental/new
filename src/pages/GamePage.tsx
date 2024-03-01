@@ -4,7 +4,7 @@ import {
   LoadingOverlay,
   Modal,
   SimpleGrid,
-  lighten,
+  Space,
 } from '@mantine/core';
 import { DraggableBlockquote } from '../components/DraggableBlockquote';
 import data from '@emoji-mart/data';
@@ -117,13 +117,14 @@ const GamePage = () => {
 
   return (
     <>
+      <Space h={'xl'} />
       <SimpleGrid cols={2}>
         <DraggableBlockquote
           color={'blue'}
           id="water"
           icon={wateremoji}
           onClick={clicking('water')}
-          bg={isLoading || user.water !== 0 ? lighten('blue', 0.5) : 'gray'}
+          bg={'blue'}
         >
           <LoadingOverlay
             visible={state.visible}
@@ -132,11 +133,11 @@ const GamePage = () => {
             bg={'blue'}
           />
           <Indicator
-            disabled={!isLoading || user.water == 0}
+            disabled={user.water == 0}
             color="blue"
             size="lg"
             radius="md"
-            label={user.water}
+            label={isLoading ? '' : user.water}
             position="middle-start"
             withBorder
             processing={isLoading}
@@ -146,7 +147,7 @@ const GamePage = () => {
         </DraggableBlockquote>
         <DraggableBlockquote
           color={'cyan'}
-          bg={isLoading || user.wind !== 0 ? lighten('teal', 0.5) : 'gray'}
+          bg={'teal'}
           id="wind"
           icon={windemoji}
           onClick={clicking('wind')}
@@ -162,7 +163,7 @@ const GamePage = () => {
             color="teal"
             size="lg"
             radius="md"
-            label={user.wind}
+            label={isLoading ? '' : user.wind}
             position="middle-start"
             withBorder
             processing={isLoading}
@@ -172,7 +173,7 @@ const GamePage = () => {
         </DraggableBlockquote>
         <DraggableBlockquote
           color={'brown'}
-          bg={isLoading || user.earth !== 0 ? lighten('brown', 0.5) : 'gray'}
+          bg={'brown'}
           id="soil"
           icon={soilemoji}
           onClick={clicking('soil')}
@@ -188,7 +189,7 @@ const GamePage = () => {
             color="brown"
             size="lg"
             radius="md"
-            label={user.earth}
+            label={isLoading ? '' : user.earth}
             position="middle-start"
             withBorder
             processing={isLoading}
@@ -197,7 +198,7 @@ const GamePage = () => {
           </Indicator>
         </DraggableBlockquote>
         <DraggableBlockquote
-          bg={isLoading || user.fire !== 0 ? lighten('orange', 0.5) : 'gray'}
+          bg={'orange'}
           id="fire"
           icon={fireemoji}
           onClick={clicking('fire')}
@@ -210,11 +211,11 @@ const GamePage = () => {
             bg={'orange'}
           />
           <Indicator
-            disabled={!isLoading || user.fire == 0}
+            disabled={user.fire == 0}
             color="orange"
             size="lg"
             radius="md"
-            label={user.fire}
+            label={isLoading ? '' : user.fire}
             position="middle-start"
             withBorder
             processing={isLoading}

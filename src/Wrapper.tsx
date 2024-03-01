@@ -58,7 +58,6 @@ export const Wrapper = () => {
   const user = useUser();
   const allelements =
     user.user.earth + user.user.fire + user.user.water + user.user.wind;
-
   return (
     <DirectionProvider initialDirection="rtl">
       <MantineProvider defaultColorScheme="light" theme={theme}>

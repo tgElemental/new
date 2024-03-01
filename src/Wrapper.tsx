@@ -3,6 +3,7 @@ import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
 import {
   AppShell,
+  Container,
   DirectionProvider,
   Flex,
   Indicator,
@@ -63,109 +64,113 @@ export const Wrapper = () => {
       <MantineProvider defaultColorScheme="light" theme={theme}>
         <Notifications />
         <Router>
-          <AppShell header={{ height: 40 }} footer={{ height: 60 }}>
-            <AppShell.Header
-              p="10"
-              style={{
-                background: 'linear-gradient(180deg, #0e87cc  30%, #c3b091)',
-                color: 'white',
-                fontWeight: 100,
-              }}
-            >
-              <Nav />
-            </AppShell.Header>
-            <AppShell.Main pt="40" pr={'xs'} pl={'xs'} pb="60" mb="60">
-              <App />
-            </AppShell.Main>
-            <AppShell.Footer>
-              <Flex
-                mih={60}
-                bg="rgba(0, 0, 0, .3)"
-                gap="xs"
-                justify="center"
-                align="center"
-                direction="row"
-                // wrap="wrap"
+          <Container size={'xs'}>
+            <AppShell header={{ height: 40 }} footer={{ height: 60 }}>
+              <AppShell.Header
+                p="10"
+                style={{
+                  background: 'linear-gradient(180deg, #0e87cc  30%, #c3b091)',
+                  color: 'white',
+                  fontWeight: 100,
+                }}
               >
-                <Link to={'/'}>
-                  <UnstyledButton
-                    mr={'xs'}
-                    ml={'xs'}
-                    style={{ textAlign: 'center', color: 'white' }}
-                  >
-                    <IconHome2 style={{ width: rem(24), height: rem(24) }} />
-                    <br />
-                    شروع
-                  </UnstyledButton>
-                </Link>
-
-                <Link to={'/elements'}>
-                  <Indicator
-                    inline
-                    color="red"
-                    position="top-start"
-                    size={20}
-                    withBorder
-                    label={allelements}
-                  >
+                <Nav />
+              </AppShell.Header>
+              <AppShell.Main pt="40" pr={'xs'} pl={'xs'} pb="60" mb="60">
+                <App />
+              </AppShell.Main>
+              <AppShell.Footer>
+                <Flex
+                  mih={60}
+                  bg="rgba(0, 0, 0, .3)"
+                  gap="xs"
+                  justify="center"
+                  align="center"
+                  direction="row"
+                  // wrap="wrap"
+                >
+                  <Link to={'/'}>
                     <UnstyledButton
                       mr={'xs'}
                       ml={'xs'}
                       style={{ textAlign: 'center', color: 'white' }}
                     >
-                      <IconPackage
-                        style={{ width: rem(24), height: rem(24) }}
-                      />
+                      <IconHome2 style={{ width: rem(24), height: rem(24) }} />
                       <br />
-                      عناصر
+                      شروع
                     </UnstyledButton>
-                  </Indicator>
-                </Link>
+                  </Link>
 
-                <Link to={'/game'}>
-                  <Indicator label="آزمایشی" position="top-start" size={16}>
+                  <Link to={'/elements'}>
+                    <Indicator
+                      inline
+                      color="red"
+                      position="top-start"
+                      size={20}
+                      withBorder
+                      label={allelements}
+                    >
+                      <UnstyledButton
+                        mr={'xs'}
+                        ml={'xs'}
+                        style={{ textAlign: 'center', color: 'white' }}
+                      >
+                        <IconPackage
+                          style={{ width: rem(24), height: rem(24) }}
+                        />
+                        <br />
+                        عناصر
+                      </UnstyledButton>
+                    </Indicator>
+                  </Link>
+
+                  <Link to={'/game'}>
+                    <Indicator label="آزمایشی" position="top-start" size={16}>
+                      <UnstyledButton
+                        mr={'xs'}
+                        ml={'xs'}
+                        style={{ textAlign: 'center', color: 'white' }}
+                      >
+                        <IconBrandAppleArcade
+                          style={{ width: rem(24), height: rem(24) }}
+                        />
+                        <br />
+                        بازی
+                      </UnstyledButton>
+                    </Indicator>
+                  </Link>
+
+                  <Link to={'/ranking'}>
                     <UnstyledButton
                       mr={'xs'}
                       ml={'xs'}
                       style={{ textAlign: 'center', color: 'white' }}
                     >
-                      <IconBrandAppleArcade
+                      <IconChartBar
                         style={{ width: rem(24), height: rem(24) }}
                       />
                       <br />
-                      بازی
+                      رده بندی
                     </UnstyledButton>
-                  </Indicator>
-                </Link>
+                  </Link>
 
-                <Link to={'/ranking'}>
-                  <UnstyledButton
-                    mr={'xs'}
-                    ml={'xs'}
-                    style={{ textAlign: 'center', color: 'white' }}
-                  >
-                    <IconChartBar style={{ width: rem(24), height: rem(24) }} />
-                    <br />
-                    رده بندی
-                  </UnstyledButton>
-                </Link>
-
-                <Link to={'/help'}>
-                  <UnstyledButton
-                    mr={'xs'}
-                    ml={'xs'}
-                    style={{ textAlign: 'center', color: 'white' }}
-                  >
-                    <IconInfoOctagonFilled
-                      style={{ width: rem(24), height: rem(24) }}
-                    />
-                    <br />
-                    راهنما
-                  </UnstyledButton>
-                </Link>
-              </Flex>
-            </AppShell.Footer>
-          </AppShell>
+                  <Link to={'/help'}>
+                    <UnstyledButton
+                      mr={'xs'}
+                      ml={'xs'}
+                      style={{ textAlign: 'center', color: 'white' }}
+                    >
+                      <IconInfoOctagonFilled
+                        style={{ width: rem(24), height: rem(24) }}
+                      />
+                      <br />
+                      راهنما
+                    </UnstyledButton>
+                  </Link>
+                </Flex>
+              </AppShell.Footer>
+            </AppShell>
+          </Container>
         </Router>
       </MantineProvider>
     </DirectionProvider>

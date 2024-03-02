@@ -30,22 +30,22 @@ function HomePage() {
             قهرمانان نجات دهنده‌ی دنیا هستید، رازهای عناصر را کشف کنید، درختان
             جدید پرورش دهید و سرسبزی و تعادل را به جهان برگردانید.
           </Text>
-          <Group className={classes.controls}>
+          <Group className={classes.controls} grow gap={'xs'}>
             <Link to={'/invite'}>
               <Button
-                size="lg"
+                size="md"
                 className={classes.control}
                 variant="gradient"
                 gradient={{ from: 'orange', to: 'black' }}
                 leftSection={<IconHeartHandshake size={20} />}
               >
-                دعوت قهرمانان جدید
+                دعوت
               </Button>
             </Link>
 
             <Link to={'/help'}>
               <Button
-                size="lg"
+                size="md"
                 className={classes.control}
                 variant="gradient"
                 gradient={{ from: 'blue', to: 'cyan' }}
@@ -57,7 +57,7 @@ function HomePage() {
 
             <Link to={'/game'}>
               <Button
-                size="lg"
+                size="md"
                 variant="default"
                 className={classes.control}
                 leftSection={<IconBrandAppleArcade size={20} />}

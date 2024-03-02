@@ -124,7 +124,7 @@ const GamePage = () => {
           id="water"
           icon={wateremoji}
           onClick={clicking('water')}
-          bg={'blue'}
+          // bg={'blue'}
         >
           <LoadingOverlay
             visible={state.visible}
@@ -147,7 +147,7 @@ const GamePage = () => {
         </DraggableBlockquote>
         <DraggableBlockquote
           color={'cyan'}
-          bg={'teal'}
+          // bg={'cyan'}
           id="wind"
           icon={windemoji}
           onClick={clicking('wind')}
@@ -159,8 +159,8 @@ const GamePage = () => {
             bg={'teal'}
           />
           <Indicator
-            disabled={!isLoading || user.wind == 0}
-            color="teal"
+            disabled={user.wind == 0}
+            color="cyan"
             size="lg"
             radius="md"
             label={isLoading ? '' : user.wind}
@@ -173,7 +173,7 @@ const GamePage = () => {
         </DraggableBlockquote>
         <DraggableBlockquote
           color={'brown'}
-          bg={'brown'}
+          // bg={'brown'}
           id="soil"
           icon={soilemoji}
           onClick={clicking('soil')}
@@ -185,7 +185,7 @@ const GamePage = () => {
             bg={'brown'}
           />
           <Indicator
-            disabled={!isLoading || user.earth == 0}
+            disabled={user.earth == 0}
             color="brown"
             size="lg"
             radius="md"
@@ -198,7 +198,7 @@ const GamePage = () => {
           </Indicator>
         </DraggableBlockquote>
         <DraggableBlockquote
-          bg={'orange'}
+          // bg={'orange'}
           id="fire"
           icon={fireemoji}
           onClick={clicking('fire')}

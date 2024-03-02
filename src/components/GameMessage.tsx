@@ -98,6 +98,13 @@ const GameMessage: React.FC<GameMessageProps> = ({
                 bullet={<em-emoji id="gift" Size="2em"></em-emoji>}
                 title="جایزه"
               >
+                <ConfettiExplosion
+                  zIndex={9999999999}
+                  particleCount={20}
+                  colors={['green']}
+                  width={20}
+                  height={20}
+                />
                 <Text c="dimmed" size="sm">
                   {extraElementName}
                 </Text>

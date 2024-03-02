@@ -51,6 +51,10 @@ const GamePage = () => {
     remain: 0,
     text: '',
     status: 1,
+    userwater: user.water,
+    userwind: user.wind,
+    userfire: user.fire,
+    usesoil: user.earth,
   });
 
   const showNotification = (elementName: string, message: string) => {

@@ -39,3 +39,16 @@ export const elementEmoji: Record<ElementFarsi, string> = {
   جایزه: '<em-emoji id="gift" Size="2em"></em-emoji>',
   امتیاز: '<em-emoji id="moneybag" Size="2em"></em-emoji>',
 };
+
+export const elementEmojiid: Record<ElementFarsi, string> = {
+  آب: 'droplet',
+  باد: 'wind_blowing_face',
+  خاک: 'large_brown_circle',
+  آتش: 'fire',
+  هوا: 'wind_blowing_face',
+  درخت: 'deciduous_tree',
+  نور: 'sunny',
+  نتیجه: 'trophy',
+  جایزه: 'gift',
+  امتیاز: 'moneybag',
+};

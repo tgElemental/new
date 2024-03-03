@@ -5,7 +5,7 @@ import data from '@emoji-mart/data';
 import { init } from 'emoji-mart';
 import ConfettiExplosion from 'react-confetti-explosion';
 import { IconInfoCircle } from '@tabler/icons-react';
-import { ElementFarsi, elementEmoji } from '../const/elementsConstants';
+import { ElementFarsi, elementEmojiid } from '../const/elementsConstants';
 init({ data });
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -50,7 +50,12 @@ const GameMessage: React.FC<GameMessageProps> = ({
           <ConfettiExplosion zIndex={9999999999} />
           <Timeline color="green" active={3} lineWidth={3} bulletSize={40}>
             <Timeline.Item
-              bullet={elementEmoji[elementName as ElementFarsi]}
+              bullet={
+                <em-emoji
+                  id={elementEmojiid[elementName as ElementFarsi]}
+                  size="2em"
+                ></em-emoji>
+              }
               title={elementName}
             >
               <Text c="dimmed" size="sm">
@@ -58,7 +63,12 @@ const GameMessage: React.FC<GameMessageProps> = ({
               </Text>
             </Timeline.Item>
             <Timeline.Item
-              bullet={elementEmoji[botElementName as ElementFarsi]}
+              bullet={
+                <em-emoji
+                  id={elementEmojiid[botElementName as ElementFarsi]}
+                  size="2em"
+                ></em-emoji>
+              }
               title={botElementName}
             >
               <Text c="dimmed" size="sm">
@@ -66,7 +76,12 @@ const GameMessage: React.FC<GameMessageProps> = ({
               </Text>
             </Timeline.Item>
             <Timeline.Item
-              bullet={elementEmoji['نتیجه' as ElementFarsi]}
+              bullet={
+                <em-emoji
+                  id={elementEmojiid['نتیجه' as ElementFarsi]}
+                  size="2em"
+                ></em-emoji>
+              }
               title="نتیجه"
             >
               <Text c="dimmed" size="sm">
@@ -75,7 +90,12 @@ const GameMessage: React.FC<GameMessageProps> = ({
             </Timeline.Item>
             {extraElementName ? (
               <Timeline.Item
-                bullet={elementEmoji['جایزه' as ElementFarsi]}
+                bullet={
+                  <em-emoji
+                    id={elementEmojiid['جایزه' as ElementFarsi]}
+                    size="2em"
+                  ></em-emoji>
+                }
                 title="جایزه"
               >
                 <ConfettiExplosion
@@ -92,7 +112,12 @@ const GameMessage: React.FC<GameMessageProps> = ({
             ) : null}
             {score > 0 ? (
               <Timeline.Item
-                bullet={elementEmoji['امتیاز' as ElementFarsi]}
+                bullet={
+                  <em-emoji
+                    id={elementEmojiid['امتیاز' as ElementFarsi]}
+                    size="2em"
+                  ></em-emoji>
+                }
                 title="امتیاز"
                 lineVariant="dashed"
               >
@@ -102,7 +127,12 @@ const GameMessage: React.FC<GameMessageProps> = ({
               </Timeline.Item>
             ) : null}
             <Timeline.Item
-              bullet={elementEmoji[elementName as ElementFarsi]}
+              bullet={
+                <em-emoji
+                  id={elementEmojiid[elementName as ElementFarsi]}
+                  size="2em"
+                ></em-emoji>
+              }
               title="باقیمانده"
               lineVariant="dotted"
             >

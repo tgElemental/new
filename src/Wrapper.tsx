@@ -28,32 +28,6 @@ const theme = createTheme({
   fontFamily: 'Vazirmatn UI FD',
   defaultGradient: { to: '#c3b091', from: '#0e87cc', deg: 45 },
   primaryColor: 'cyan',
-  colors: {
-    'ocean-blue': [
-      '#7AD1DD',
-      '#5FCCDB',
-      '#44CADC',
-      '#2AC9DE',
-      '#1AC2D9',
-      '#11B7CD',
-      '#09ADC3',
-      '#0E99AC',
-      '#128797',
-      '#147885',
-    ],
-    'bright-pink': [
-      '#F0BBDD',
-      '#ED9BCF',
-      '#EC7CC3',
-      '#ED5DB8',
-      '#F13EAF',
-      '#F71FA7',
-      '#FF00A1',
-      '#E00890',
-      '#C50E82',
-      '#AD1374',
-    ],
-  },
 });
 export const Wrapper = () => {
   const user = useUser();
@@ -64,8 +38,12 @@ export const Wrapper = () => {
       <MantineProvider defaultColorScheme="light" theme={theme}>
         <Notifications />
         <Router>
-          <Container size={'xs'}>
-            <AppShell header={{ height: 40 }} footer={{ height: 60 }}>
+          <Container size={'xs'} bg={'#c3b091'}>
+            <AppShell
+              header={{ height: 40 }}
+              footer={{ height: 60 }}
+              withBorder={false}
+            >
               <AppShell.Header
                 p="10"
                 style={{
@@ -76,13 +54,20 @@ export const Wrapper = () => {
               >
                 <Nav />
               </AppShell.Header>
-              <AppShell.Main pt="40" pr={'xs'} pl={'xs'} pb="60" mb="60">
+              <AppShell.Main
+                pt="40"
+                pr={'xs'}
+                pl={'xs'}
+                pb="60"
+                mb="60"
+                bg={'#c3b091'}
+              >
                 <App />
               </AppShell.Main>
               <AppShell.Footer>
                 <Flex
                   mih={60}
-                  bg="rgba(0, 0, 0, .3)"
+                  bg="#c3b091"
                   gap="xs"
                   justify="center"
                   align="center"

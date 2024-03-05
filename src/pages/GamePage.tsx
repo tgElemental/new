@@ -124,11 +124,10 @@ const GamePage = () => {
       <Space h={'xl'} />
       <SimpleGrid cols={2}>
         <DraggableBlockquote
-          color={'blue'}
+          color={'white'}
           id="water"
           icon={wateremoji}
           onClick={clicking('water')}
-          // bg={'blue'}
         >
           <LoadingOverlay
             visible={state.visible}
@@ -150,8 +149,7 @@ const GamePage = () => {
           </Indicator>
         </DraggableBlockquote>
         <DraggableBlockquote
-          color={'cyan'}
-          // bg={'cyan'}
+          color={'white'}
           id="wind"
           icon={windemoji}
           onClick={clicking('wind')}
@@ -176,8 +174,7 @@ const GamePage = () => {
           </Indicator>
         </DraggableBlockquote>
         <DraggableBlockquote
-          color={'brown'}
-          // bg={'brown'}
+          color={'white'}
           id="soil"
           icon={soilemoji}
           onClick={clicking('soil')}
@@ -202,11 +199,10 @@ const GamePage = () => {
           </Indicator>
         </DraggableBlockquote>
         <DraggableBlockquote
-          // bg={'orange'}
           id="fire"
           icon={fireemoji}
           onClick={clicking('fire')}
-          color={'orange'}
+          color={'white'}
         >
           <LoadingOverlay
             visible={state.visible}
@@ -248,7 +244,6 @@ const GamePage = () => {
             </Modal.Title>
             <Modal.CloseButton />
           </Modal.Header>
-          {/* <Modal.Body>{modalMessage}</Modal.Body> */}
           <Modal.Body>
             <GameMessage
               status={state.status}
